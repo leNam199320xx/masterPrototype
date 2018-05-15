@@ -1,0 +1,16 @@
+<div class='nam-all'>
+  <div class='nav-top'>
+    <nam-button Title='Home'></nam-button>
+    <nam-button Title='Dialog' (Click)='openDialog()'></nam-button>
+  </div>
+  <div class='center-site'>
+    <nam-left-site></nam-left-site>
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class='bottom-site'>
+    Footer
+  </div>
+
+  <nam-dialog [enabled]='openedDialog' (closeDialog)='openedDialog = false' [dialogContentComponent]='dialogContentComponent'></nam-dialog>
+</div>
