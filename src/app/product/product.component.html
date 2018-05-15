@@ -1,13 +1,12 @@
 <div class='products'>
-    <ng-container *ngFor='let p of products'>
-        <div class='product'>
-            <div>{{p.title}}</div>
-            <div>{{p.detail}}</div>
-        </div>
-    </ng-container>
-   
+  <ng-container *ngFor='let p of products'>
+    <div class='product'>
+      <div>{{p.title}}</div>
+      <div>{{p.detail}}</div>
+    </div>
+  </ng-container>
 </div>
 
-<div>
-    <button (click)='btnClick()'>next</button>
-</div>
+<nam-paging (nextClick)='btnNextClick()' (backClick)='btnBackClick()' (gotoClick)='btnGotoClick($event)' [page]='productService.page'
+  [isLoadMore]='productService.isLoadMore'></nam-paging>
+  

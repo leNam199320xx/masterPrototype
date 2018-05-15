@@ -11,7 +11,8 @@ import { NamNotFoundComponent } from './notfound/notfound.component';
 import { NamHomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NamCommonService } from './service/common.service';
+import { NamCommonModule } from './common/NamCommon.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +27,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NamCommonModule
   ],
-  providers: [],
+  providers: [NamCommonService],
   bootstrap: [AppComponent],
   entryComponents: [NamTagComponent]
 })

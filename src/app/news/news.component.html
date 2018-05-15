@@ -1,0 +1,12 @@
+<div class='news-title'>news</div>
+<div class='news'>
+  <ng-container *ngFor='let n of newsService.news'>
+    <div class='news-item'>
+      <div>{{n.title}}</div>
+      <div>{{n.content}}</div>
+    </div>
+  </ng-container>
+</div>
+
+<nam-paging (nextClick)='btnNextClick()' (backClick)='btnBackClick()' (gotoClick)='btnGotoClick($event)' [page]='newsService.page'
+  [isLoadMore]='newsService.isLoadMore'></nam-paging>

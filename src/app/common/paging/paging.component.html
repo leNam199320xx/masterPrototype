@@ -1,0 +1,18 @@
+<div class='paging-controls'>
+  <div *ngIf='!isLoadMore'>
+    <button (click)='btnBackClick()'>back</button>
+    <button *ngIf='indexOfPaging > 0' (click)='backPaging()'>{{'<'}}</button>
+
+    <ng-container *ngFor='let ix of page.pageLengths '>
+        <ng-container *ngIf='ix < sizeOfPaging * (indexOfPaging + 1) && ix >= sizeOfPaging * indexOfPaging'>
+            <button (click)='btnGotoClick(ix)' [ngClass]='{"selected": ix === page.pageIndex }'> {{ix + 1}}</button>
+        </ng-container>
+    </ng-container>
+    
+    <button *ngIf='indexOfPaging < (lengthOfPaging - 1)' (click)='nextPaging()'>{{'>'}}</button>
+    <button (click)='btnNextClick()'>next</button>
+  </div>
+  <div *ngIf='isLoadMore'>
+    <button (click)='btnNextClick(true)'>Load more</button>
+  </div>
+</div>

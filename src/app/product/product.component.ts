@@ -8,26 +8,35 @@ import { ProductModel } from './product.model';
     styleUrls: ['product.scss']
 })
 export class NamProductComponent implements OnInit {
-    @Input() lengthOnPage = 10;
-    @Input() length = 100;
     products: ProductModel[] = [];
-    countPages = 1;
-    constructor(public productService: ProductService) {        
+    constructor(public productService: ProductService) {
+        this.productService.isLoadMore = false;
+        this.productService.productsSubject.subscribe(res => this.products = this.productService.products);
     }
     // default methods
     ngOnInit() {
-        this.countPages = Math.floor(this.length / this.lengthOnPage);
-        this.loadProducts();
+        this.productService.gotoPage(1);
     }
 
     // defined methods
-    loadProducts() {
-        this.productService.productsSubject.subscribe(res => this.products = this.productService.products);
-        this.productService.getProductsFromServer();
+    loadProducts(isBack = false) {
+        if (isBack) {
+            this.productService.backData();
+        } else {
+            this.productService.nextData();
+        }
     }
 
     // events
-    btnClick() {
+    btnNextClick() {
         this.loadProducts();
+    }
+
+    btnBackClick() {
+        this.loadProducts(true);
+    }
+
+    btnGotoClick(index = 0) {
+        this.productService.gotoPage(index + 1);
     }
 }

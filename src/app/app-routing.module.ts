@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: './product/product.module#NamProductModule'
   },
   {
+    path: 'news',
+    loadChildren: './news/news.module#NamNewsModule'
+  },
+  {
     path: '',
     loadChildren: './home/home.module#NamHomeModule'
   },

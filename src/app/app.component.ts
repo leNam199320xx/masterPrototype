@@ -6,7 +6,7 @@ import { NamDialogContentComponent } from './nam/nam-dialog/dialog.component';
   selector: 'nam-root',
   templateUrl: './app.component.html',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./nam/nam-define.css']
+  styleUrls: ['./nam/nam-define.css', 'app.scss']
 })
 export class AppComponent {
   title = 'nam app';

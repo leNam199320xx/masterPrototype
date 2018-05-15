@@ -2,6 +2,13 @@
 .products{
     padding: 1em;
     width: 100%;
+    display: block;
+
+    .product{
+        border: 1px solid black;
+        margin: 1em;
+        display: inline-block;
+    }
 }
 
 button {

@@ -1,0 +1,10 @@
+.paging-controls {
+    padding: 1em;
+    button {
+        &.selected {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+        }
+    }
+}
