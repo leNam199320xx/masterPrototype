@@ -1,4 +1,4 @@
-export interface ProductModel {
+export interface NamProductModel {
     id: number;
     name: string;
     url_main: string;

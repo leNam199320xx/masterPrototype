@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { NamCommonService } from './common.service';
 
 @Injectable()
-export class NewsService {
+export class NamNewsService {
     page: NamPageModel;
     news: NamNewsModel[];
     newsCurrent: NamNewsModel;
@@ -17,7 +17,7 @@ export class NewsService {
         this.newsSubject.subscribe(res => {
             this.news = res;
         });
-        this.page = new NamPageModel(100, 10);
+        this.page = new NamPageModel(2000, 10);
         this.isLoadMore = this.commonService.isLoadMore;
     }
 
@@ -29,8 +29,8 @@ export class NewsService {
             const id = i + this.page.pageIndex * this.page.pageLength;
             testData.push({
                 id: id,
-                title: 'news',
-                content: 'news _ ' + id,
+                title: 'caption here',
+                content: 'this is content of a post by user  _ ' + id,
                 url: '',
                 authorImage: '',
                 authorLink: '',

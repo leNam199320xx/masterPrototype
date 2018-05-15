@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NamCommonService } from './service/common.service';
 import { NamCommonModule } from './common/NamCommon.module';
+import { NamNewsService } from './service/news.service';
+import { NamLoginService } from './service/login.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,7 @@ import { NamCommonModule } from './common/NamCommon.module';
     AppRoutingModule,
     NamCommonModule
   ],
-  providers: [NamCommonService],
+  providers: [NamCommonService, NamLoginService],
   bootstrap: [AppComponent],
   entryComponents: [NamTagComponent]
 })

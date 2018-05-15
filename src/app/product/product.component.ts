@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../service/product.service';
-import { ProductModel } from './product.model';
+import { NamProductModel } from './product.model';
 
 @Component({
     selector: 'nam-product',
@@ -8,7 +8,7 @@ import { ProductModel } from './product.model';
     styleUrls: ['product.scss']
 })
 export class NamProductComponent implements OnInit {
-    products: ProductModel[] = [];
+    products: NamProductModel[] = [];
     constructor(public productService: ProductService) {
         this.productService.isLoadMore = false;
         this.productService.productsSubject.subscribe(res => this.products = this.productService.products);

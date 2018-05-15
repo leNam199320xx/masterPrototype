@@ -10,10 +10,17 @@
       <li>
         <a routerLink='/product'>Product</a>
       </li>
+      <li *ngIf='!loging'>
+        <a href='#login' (click)='btnLogin()'>Login facebook</a>
+      </li>
+      <li *ngIf='loging'>
+          <a href='#logout' (click)='btnLogout()'>Logout facebook</a>
+        </li>
     </ul>
+
+    <div class='user' *ngIf='loging'>{{userName}}</div>
   </div>
   <div class='center-site'>
-    <nam-left-site></nam-left-site>
     <router-outlet></router-outlet>
   </div>
 

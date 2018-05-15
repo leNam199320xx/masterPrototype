@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from '../service/news.service';
+import { NamNewsService } from '../service/news.service';
 
 @Component({
     selector: 'nam-news',
@@ -7,7 +7,7 @@ import { NewsService } from '../service/news.service';
     styleUrls: ['news.scss']
 })
 export class NamNewsComponent implements OnInit {
-    constructor(public newsService: NewsService) {
+    constructor(public newsService: NamNewsService) {
     }
 
     // default methods

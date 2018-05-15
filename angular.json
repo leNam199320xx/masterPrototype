@@ -23,7 +23,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/extendScript/facebookClient.js"
+            ]
           },
           "configurations": {
             "production": {

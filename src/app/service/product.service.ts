@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ProductModel } from '../product/product.model';
+import { NamProductModel } from '../product/product.model';
 import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
@@ -8,9 +8,9 @@ import { NamCommonService } from './common.service';
 
 @Injectable()
 export class ProductService {
-    products: ProductModel[] = [];
-    productsSubject: Subject<ProductModel[]> = new Subject();
-    productsObserve: Observable<ProductModel[]> = new Observable();
+    products: NamProductModel[] = [];
+    productsSubject: Subject<NamProductModel[]> = new Subject();
+    productsObserve: Observable<NamProductModel[]> = new Observable();
     isLoadMore = false;
     page: NamPageModel;
     pageSize = 10;
@@ -23,7 +23,7 @@ export class ProductService {
     }
     getProductsFromServer() {
         // test data
-        const testData: ProductModel[] = [];
+        const testData: NamProductModel[] = [];
         for (let i = 0; i < this.page.pageSize; i++) {
             const id = i + this.page.pageIndex * this.page.pageLength;
             testData.push({
