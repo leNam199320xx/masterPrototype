@@ -4,7 +4,7 @@ export class NamContentModel {
     content: string;
     url: string;
     imageSmallLink: string;
-    imagesRootLink: string;
+    imagesRootLink: string[];
     authorName: string;
     authorLink: string;
     authorImage: string;

@@ -15,6 +15,7 @@ import { NamCommonService } from './service/common.service';
 import { NamCommonModule } from './common/NamCommon.module';
 import { NamNewsService } from './service/news.service';
 import { NamLoginService } from './service/login.service';
+
 @NgModule({
   declarations: [
     AppComponent,

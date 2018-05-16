@@ -1,18 +1,39 @@
+@import 'config.scss';
+body {
+  margin: 0;
+  background-color: $main-background-color;
+  font-family: $main-font-family;
+}
+*{
+    box-sizing: border-box;
+    font-size: 1em;
+}
+.center-site{
+    padding-top: 3em;
+}
 .nav-top {
-    // position: fixed;
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        li {
-            float: left;
-            padding: 0.5em;
-            a {
-                display: block;
-                text-align: center;
-                text-decoration: none;
-            }
+  background-color: $main-color;
+  color: $main-text-color;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    li {
+      float: left;
+      padding: 0.5em;
+      a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        :active {
+          color: red;
         }
+      }
     }
+  }
 }

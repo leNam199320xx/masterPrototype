@@ -1,6 +1,5 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, HostListener } from '@angular/core';
 import { NamTagComponent } from './nam/nam-tag/tag.component';
-import { NamDialogContentComponent } from './nam/nam-dialog/dialog.component';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NamLoginService } from './service/login.service';
@@ -11,21 +10,22 @@ const FB = (<any>window).FB;
   selector: 'nam-root',
   templateUrl: './app.component.html',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./nam/nam-define.css', 'app.scss']
+  styleUrls: ['app.scss']
 })
 export class AppComponent implements OnInit {
   title = 'nam app';
   userName = '';
   userId = '';
-  openedDialog = false;
   loging = false;
-  dialogContentComponent: NamDialogContentComponent = new NamDialogContentComponent(NamTagComponent, {});
   socialPlatform = 'facebook';
 
   // Configs
   clientId = '500288897006445';
   constructor(public http: HttpClient, private router: Router, private loginService: NamLoginService) {
+  }
 
+  @HostListener('window:resize', ['$event']) onresize(_event: Event) {
+    console.log(_event);
   }
   ngOnInit() {
     FB.init({
@@ -36,9 +36,6 @@ export class AppComponent implements OnInit {
     });
 
     this.getLoginStatus();
-  }
-  openDialog() {
-    this.openedDialog = true;
   }
 
   btnLogin() {
@@ -70,7 +67,6 @@ export class AppComponent implements OnInit {
 
   getDataUser() {
     FB.api('/me', (res) => {
-      console.log(res);
       this.userName = res.name;
       this.userId = res.id;
 

@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
 import { NamPageModel } from '../model/page.model';
-import { NamNewsModel } from '../news/news.model';
 import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { NamCommonService } from './common.service';
+import { NamContentModel } from '../model/content.model';
 
 @Injectable()
-export class NamNewsService {
+export class NamPostService {
     page: NamPageModel;
-    news: NamNewsModel[];
-    newsCurrent: NamNewsModel;
-    newsSubject: Subject<NamNewsModel[]> = new Subject();
-    newsObservable: Observable<NamNewsModel[]> = new Observable();
+    posts: NamContentModel[];
+    postCurrent: NamContentModel;
+    postSubject: Subject<NamContentModel[]> = new Subject();
+    postObservable: Observable<NamContentModel[]> = new Observable();
     isLoadMore = false;
     constructor(private http: HttpClient, private commonService: NamCommonService) {
-        this.newsSubject.subscribe(res => {
-            this.news = res;
+        this.postSubject.subscribe(res => {
+            this.posts = res;
         });
         this.page = new NamPageModel(2000, 10);
         this.isLoadMore = this.commonService.isLoadMore;
     }
 
-    getNewsFromServer() {
+    getPostFromServer() {
         // test data
         // test data
-        const testData: NamNewsModel[] = [];
+        const testData: NamContentModel[] = [];
         for (let i = 0; i < this.page.pageSize; i++) {
             const id = i + this.page.pageIndex * this.page.pageLength;
             const imgLink = 'https://scontent.fhan3-1.fna.fbcdn.net/v/t1.0-9/32416504_1039141602928842_7627541332747091968_n.jpg'
@@ -47,34 +47,34 @@ export class NamNewsService {
                 tags: [],
                 types: [],
                 updateDate: ''
-            } as NamNewsModel);
+            } as NamContentModel);
         }
-        this.newsObservable = new Observable(res => {
-            res.next((this.commonService.isLoadMore) ? this.news.concat(testData) : testData);
+        this.postObservable = new Observable(res => {
+            res.next((this.commonService.isLoadMore) ? this.posts.concat(testData) : testData);
         });
         // server data
 
-        // this.newsObservable = this.http.get<ProductModel[]>('api/getProducts');
-        this.newsObservable.subscribe(res => {
-            this.newsSubject.next(res);
+        // this.postObservable = this.http.get<ProductModel[]>('api/getProducts');
+        this.postObservable.subscribe(res => {
+            this.postSubject.next(res);
         });
         // server data
     }
 
     nextData() {
         if (this.commonService.nextData(this.page)) {
-            this.getNewsFromServer();
+            this.getPostFromServer();
         }
     }
 
     backData() {
         if (this.commonService.backData(this.page)) {
-            this.getNewsFromServer();
+            this.getPostFromServer();
         }
     }
     gotoPage(_page: number = this.page.pageIndex + 1) {
         if (this.commonService.gotoPage(this.page, _page)) {
-            this.getNewsFromServer();
+            this.getPostFromServer();
         }
     }
 }

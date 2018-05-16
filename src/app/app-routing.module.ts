@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: './news/news.module#NamNewsModule'
   },
   {
+    path: 'post',
+    loadChildren: './post/post.module#NamPostModule'
+  },
+  {
     path: '',
     loadChildren: './home/home.module#NamHomeModule'
   },

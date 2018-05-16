@@ -1,0 +1,8 @@
+<div class='posts'>
+  <ng-container *ngFor='let post of postService.posts'>
+    <nam-content [content]='post'></nam-content>
+  </ng-container>
+</div>
+
+<nam-paging (nextClick)='btnNextClick()' (backClick)='btnBackClick()' (gotoClick)='btnGotoClick($event)' [page]='postService.page'
+  [isLoadMore]='postService.isLoadMore'></nam-paging>

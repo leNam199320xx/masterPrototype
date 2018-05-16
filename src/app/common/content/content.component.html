@@ -1,0 +1,16 @@
+<div class='content'>
+  <div class='content-text'>
+    <div class='content-title'>{{content.title}}</div>
+    <div class='content-content'>{{content.content}}</div>
+  </div>
+  <div class='content-images'>
+    <div class="content-mainimage" [ngStyle]='{"background-image": "url(" + content.imageSmallLink + ")"}'>
+    </div>
+    <div class='content-smallimages'>
+      <ng-container *ngFor='let im of content.imagesRootLink'>
+        <div class='content-image' [ngStyle]='{"background-image": "url(" + im + ")"}' (click)='btnOpenImageDialog(im)'>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
