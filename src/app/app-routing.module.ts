@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NamNotFoundComponent } from './notfound/notfound.component';
-
+import { NamCanActivateService } from './service/can-activate.service';
 
 const routes: Routes = [
   {
     path: 'customer',
-    loadChildren: './customer/customer.module#NamCustomerModule'
+    loadChildren: './customer/customer.module#NamCustomerModule',
+    canLoad: ['NamCanActivateService']
   },
   {
     path: 'product',
-    loadChildren: './product/product.module#NamProductModule'
+    loadChildren: './product/product.module#NamProductModule',
+    canLoad: [NamCanActivateService]
   },
   {
     path: 'news',
@@ -18,7 +20,8 @@ const routes: Routes = [
   },
   {
     path: 'post',
-    loadChildren: './post/post.module#NamPostModule'
+    loadChildren: './post/post.module#NamPostModule',
+    canLoad: [NamCanActivateService]
   },
   {
     path: '',
@@ -28,13 +31,15 @@ const routes: Routes = [
     path: '',
     redirectTo: '',
     pathMatch: 'full'
+  }, {
+    path: '**',
+    component: NamNotFoundComponent
   }
 ];
 @NgModule({
   imports: [
     RouterModule.forRoot(routes)
   ],
-  exports: [RouterModule],
-  providers: []
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

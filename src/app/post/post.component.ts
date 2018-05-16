@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NamPostService } from '../service/post.service';
+import { NamLoginService } from '../service/login.service';
 
 @Component({
     selector: 'nam-post',

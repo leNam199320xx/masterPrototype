@@ -1,10 +1,15 @@
-.paging-controls {
-    padding: 1em;
-    button {
-        &.selected {
-            background-color: red;
-            color: white;
-            border-radius: 50%;
+.paging {
+    display: flex;    
+    justify-content: center;
+    .paging-controls {
+        padding: 1em;
+        display: inline-block;
+        button {
+            &.selected {
+                background-color: red;
+                color: white;
+                border-radius: 50%;
+            }
         }
     }
 }

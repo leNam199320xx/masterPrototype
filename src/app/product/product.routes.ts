@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { NamProductComponent } from './product.component';
 
 const routes: Routes = [
-    { path: '', component: NamProductComponent }
+    {
+        path: '',
+        component: NamProductComponent
+    }
 ];
 
 @NgModule({

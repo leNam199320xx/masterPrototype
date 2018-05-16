@@ -4,9 +4,7 @@ import { NamProductModel } from '../product/product.model';
 export class NamUserModel {
     userId: string;
     userName: string;
-    news: NamNewsModel[];
-    products: NamProductModel[];
-
+    pictureProfile: string;
 
     getProducts() {
 

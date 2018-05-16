@@ -1,5 +1,5 @@
-<div class='paging-controls'>
-  <div *ngIf='!isLoadMore'>
+<div class='paging'>
+  <div class='paging-controls' *ngIf='!isLoadMore'>
     <button (click)='btnBackClick()'>back</button>
     <button *ngIf='indexOfPaging > 0' (click)='backPaging()'>{{'<'}}</button>
 

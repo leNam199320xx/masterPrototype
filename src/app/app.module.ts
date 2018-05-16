@@ -3,10 +3,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { NameButtonComponent } from './nam/nam-button/button.component';
-import { NamTagComponent } from './nam/nam-tag/tag.component';
-import { NamDialogComponent, NamDialogDirective } from './nam/nam-dialog/dialog.component';
-import { NamLeftSiteComponent } from './leftsite/leftsite.component';
 import { NamNotFoundComponent } from './notfound/notfound.component';
 import { NamHomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,15 +11,15 @@ import { NamCommonService } from './service/common.service';
 import { NamCommonModule } from './common/NamCommon.module';
 import { NamNewsService } from './service/news.service';
 import { NamLoginService } from './service/login.service';
+import { NamPostService } from './service/post.service';
+import { NamFooterComponent } from './footer/footer.component';
+import { NamUserModel } from './model/user.model';
+import { NamCanActivateService } from './service/can-activate.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NameButtonComponent,
-    NamTagComponent,
-    NamDialogComponent,
-    NamDialogDirective,
-    NamLeftSiteComponent,
+    NamFooterComponent,
     NamNotFoundComponent
   ],
   imports: [
@@ -33,8 +29,14 @@ import { NamLoginService } from './service/login.service';
     AppRoutingModule,
     NamCommonModule
   ],
-  providers: [NamCommonService, NamLoginService],
+  providers: [
+    NamCommonService,
+    NamLoginService,
+    NamPostService,
+    NamCanActivateService,
+    NamUserModel
+  ],
   bootstrap: [AppComponent],
-  entryComponents: [NamTagComponent]
+  entryComponents: []
 })
 export class AppModule { }

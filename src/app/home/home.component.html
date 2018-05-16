@@ -1,1 +1,9 @@
-<div class='nam-home'>Home page</div>
+<div class='home'>
+    <div class='home-no-login' *ngIf='!loging'>
+        <div>PLEASE LOGIN TO USE THIS TOOL</div>
+        <button (click)='btnLogin()'>Login</button>
+    </div>
+    <div class='home-login' *ngIf='loging'>
+        <div>WELLCOME TO YOURBOOK TOOL</div>
+    </div>
+</div>

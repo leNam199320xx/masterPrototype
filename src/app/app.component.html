@@ -7,26 +7,29 @@
       <li>
         <a routerLink='/news'>News</a>
       </li>
-      <li>
-          <a routerLink='/post'>Post</a>
-        </li>
-      <li>
+      <li *ngIf='loginService.loging'>
+        <a routerLink='/post'>Post</a>
+      </li>
+      <li *ngIf='loginService.loging'>
         <a routerLink='/product'>Product</a>
       </li>
-      <li *ngIf='!loging'>
-        <a href='#login' (click)='btnLogin()'>Login facebook</a>
+      <li *ngIf='!loginService.loging'>
+        <button (click)='btnLogin()'>Login facebook</button>
       </li>
-      <li *ngIf='loging'>
-        <a href='#logout' (click)='btnLogout()'>Logout facebook</a>
+      <li *ngIf='loginService.loging'>
+        <button (click)='btnLogout()'>Logout facebook</button>
       </li>
     </ul>
   </div>
   <div class='center-site'>
-    <div class='user' *ngIf='loging'>{{userName}}</div>
     <router-outlet></router-outlet>
+  </div>
+  <div class='user' *ngIf='loginService.loging'>
+    <div class='user-picture-profile' [ngStyle]='{"background-image" : "url("+loginService.user.pictureProfile+")"}'></div>
+    <div class='user-name'>{{loginService.user.userName}}</div>
   </div>
 
   <div class='bottom-site'>
-    Footer
+    <nam-footer></nam-footer>
   </div>
 </div>

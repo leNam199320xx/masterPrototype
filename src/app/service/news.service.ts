@@ -17,7 +17,7 @@ export class NamNewsService {
         this.newsSubject.subscribe(res => {
             this.news = res;
         });
-        this.page = new NamPageModel(2000, 10);
+        this.page = new NamPageModel(200, 10);
         this.isLoadMore = this.commonService.isLoadMore;
     }
 

@@ -1,39 +1,67 @@
 @import 'config.scss';
 body {
-  margin: 0;
-  background-color: $main-background-color;
-  font-family: $main-font-family;
+    margin: 0;
+    background-color: $main-background-color;
+    font-family: $main-font-family;
 }
-*{
+
+* {
     box-sizing: border-box;
     font-size: 1em;
 }
-.center-site{
+
+.center-site {
     padding-top: 3em;
 }
+
 .nav-top {
-  background-color: $main-color;
-  color: $main-text-color;
-  position: fixed;
-  z-index: 1;
-  width: 100%;
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    li {
-      float: left;
-      padding: 0.5em;
-      a {
-        display: block;
-        text-align: center;
-        text-decoration: none;
-        color: white;
-        :active {
-          color: red;
+    background-color: $main-color;
+    color: $main-text-color;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        li {
+            float: left;
+            padding: 0.5em;
+            a {
+                display: block;
+                text-align: center;
+                text-decoration: none;
+                color: white;
+                :active {
+                    color: red;
+                }
+            }
         }
-      }
     }
-  }
+}
+
+.user {
+    margin: 1em;
+    height: 3em;
+    width: 15em;
+    bottom: 1em;
+    left: 1em;
+    position: fixed;
+    display: flex;
+    background-color: white;
+    overflow: hidden;
+
+    .user-picture-profile {
+        background-position: center;
+        background-size: cover;
+        height: 3em;
+        width: 3em;
+    }
+    .user-name {
+        font-size: 1.5em;
+        line-height: 1.5em;
+        width: 100%;
+        padding: 0.25em;
+    }
 }
