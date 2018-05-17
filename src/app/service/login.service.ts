@@ -5,18 +5,23 @@ import { Observable, Subject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
 import { PostsFacebookModel } from '../model/post.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class NamLoginService {
     user: NamUserModel;
     userSubject: Subject<NamUserModel> = new Subject();
+    postsSubject: Subject<PostsFacebookModel> = new Subject();
     loging = false;
     FB = (<any>window).FB;
     clientId = '500288897006445';
     versionFb = 'v3.0';
     currentUrl: string;
-    postsSubject: Subject<PostsFacebookModel> = new Subject();
-    constructor(private router: Router) {
+    numberPostsLoaded = 10;
+    constructor(
+        private router: Router,
+        private http: HttpClient
+    ) {
         this.userSubject.next(null);
         this.currentUrl = window.location.pathname;
         this.postsSubject.subscribe(res => {
@@ -48,8 +53,7 @@ export class NamLoginService {
             if (res.authResponse) {
                 this.loging = true;
                 this.getDataUser();
-                // (this.router) ? this.router.navigate(['/post']) : console.log('can not navigate to post page');
-                // console.log(this.currentUrl);
+                this.getDataPost();
             } else {
                 this.loging = false;
             }
@@ -71,13 +75,12 @@ export class NamLoginService {
                 this.router.navigate([this.currentUrl]);
                 this.currentUrl = null;
             }
-            this.getDataPost();
         }
         ) : console.log('facebook is not init');
     }
 
     getDataPost() {
-        (this.FB) ? this.FB.api('/me?fields=posts.limit(50){'
+        (this.FB) ? this.FB.api('/me?fields=posts.limit(' + this.numberPostsLoaded + '){'
             + 'full_picture,'
             + 'message,'
             + 'message_tags,'
@@ -85,7 +88,7 @@ export class NamLoginService {
             + 'created_time,'
             + 'updated_time'
             + '}', (res) => {
-                this.postsSubject.next(res as PostsFacebookModel);
+                this.postsSubject.next(res.posts as PostsFacebookModel);
             }
         ) : console.log('facebook is not init');
     }
@@ -94,5 +97,6 @@ export class NamLoginService {
         this.loging = false;
         this.user = null;
         this.userSubject.next(this.user);
+        this.postsSubject.next(null);
     }
 }

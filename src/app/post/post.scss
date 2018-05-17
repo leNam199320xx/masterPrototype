@@ -1,7 +1,13 @@
 @import '../config.scss';
 .posts {
-  width: 100%;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

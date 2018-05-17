@@ -2,8 +2,8 @@ export class NamPostModel {
 }
 
 export class PostsFacebookModel {
-    data: PostFacebookModel[];
-    paging: PagingFabookModel;
+    data: PostFacebookModel[] = [];
+    paging: PagingFabookModel = {} as PagingFabookModel;
 }
 export class PostFacebookModel {
     id: string;

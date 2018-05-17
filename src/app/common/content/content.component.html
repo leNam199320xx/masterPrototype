@@ -1,16 +1,16 @@
 <div class='content' [ngClass]='className'>
   <div class='content-text'>
-    <div class='content-title'>{{content.title}}</div>
-    <div class='content-content'>{{content.content}}</div>
+    <div class='content-title'>{{content.created_time}}</div>
+    <div class='content-content'>{{content.message}}</div>
   </div>
   <div class='content-images'>
-    <div class="content-mainimage" [ngStyle]='{"background-image": "url(" + content.imageSmallLink + ")"}'>
+    <div class="content-mainimage" *ngIf='content.full_picture' [ngStyle]='{"background-image": "url(" + content.full_picture + ")"}'>
     </div>
-    <div class='content-smallimages'>
+    <!-- <div class='content-smallimages'>
       <ng-container *ngFor='let im of content.imagesRootLink'>
         <div class='content-image' [ngStyle]='{"background-image": "url(" + im + ")"}' (click)='btnOpenImageDialog(im)'>
         </div>
       </ng-container>
-    </div>
+    </div> -->
   </div>
 </div>

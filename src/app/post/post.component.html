@@ -1,8 +1,10 @@
-<div class='posts'>
-  <ng-container *ngFor='let post of postService.posts'>
-    <nam-content [content]='post'></nam-content>
+<div class='posts' *ngIf='postService.posts'>
+  <ng-container *ngFor='let post of postService.posts.data'>
+    <nam-content [content]='post' [type]='postType'></nam-content>
   </ng-container>
 </div>
-
-<nam-paging (nextClick)='btnNextClick()' (backClick)='btnBackClick()' (gotoClick)='btnGotoClick($event)' [page]='postService.page'
-  [isLoadMore]='postService.isLoadMore'></nam-paging>
+<div class="controls">
+  <button (click)='btnLoadMore()'>Xem thêm</button>
+</div>
+<!-- <nam-paging (nextClick)='btnNextClick()' (backClick)='btnBackClick()'
+  [isLoadMore]='postService.isLoadMore'></nam-paging> -->

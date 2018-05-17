@@ -9,40 +9,28 @@ import { PostFacebookModel, PostsFacebookModel } from '../model/post.model';
 
 @Injectable()
 export class NamPostService {
-    page: NamPageModel;
-    posts: PostsFacebookModel;
-    postSubject: Subject<PostsFacebookModel> = new Subject();
-    postObservable: Observable<PostsFacebookModel> = new Observable();
-    isLoadMore = false;
-    constructor(private http: HttpClient, private commonService: NamCommonService, private loginService: NamLoginService) {
-        this.postSubject.subscribe(res => {
-            this.posts = res;
-        });
-        this.page = new NamPageModel(2000, 10);
+    // page: NamPageModel;
+    posts: PostsFacebookModel = new PostsFacebookModel();
+    postsSubject: Subject<PostsFacebookModel> = new Subject();
+    isLoadMore = true;
+    constructor(
+        private http: HttpClient,
+        private commonService: NamCommonService,
+        private loginService: NamLoginService) {
+        // this.page = new NamPageModel(2000, 10);
         this.isLoadMore = this.commonService.isLoadMore;
-    }
-
-    getPostFromServer() {
-        // server data
         this.loginService.postsSubject.subscribe(res => {
+            this.postsSubject.next(res);
+        });
+        this.postsSubject.subscribe(res => {
             this.posts = res;
         });
     }
 
-    nextData() {
-        if (this.commonService.nextData(this.page)) {
-            this.getPostFromServer();
-        }
-    }
-
-    backData() {
-        if (this.commonService.backData(this.page)) {
-            this.getPostFromServer();
-        }
-    }
-    gotoPage(_page: number = this.page.pageIndex + 1) {
-        if (this.commonService.gotoPage(this.page, _page)) {
-            this.getPostFromServer();
-        }
+    loadMorePosts() {
+        this.http.get<PostsFacebookModel>(this.posts.paging.next).subscribe(res => {
+            this.posts.data = this.posts.data.concat(res.data);
+            this.posts.paging = res.paging;
+        });
     }
 }

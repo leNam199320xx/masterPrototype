@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NamPostService } from '../service/post.service';
 import { NamLoginService } from '../service/login.service';
+import { NamContentType } from '../common/content/content.component';
+import { PostFacebookModel, PostsFacebookModel } from '../model/post.model';
 
 @Component({
     selector: 'nam-post',
@@ -8,33 +10,21 @@ import { NamLoginService } from '../service/login.service';
     styleUrls: ['post.scss']
 })
 export class NamPostComponent implements OnInit {
-    constructor(public postService: NamPostService) {
+    postType = NamContentType.post;
+    postModel: PostsFacebookModel = new PostsFacebookModel();
+    constructor(
+        public postService: NamPostService
+    ) {
+        postService.postsSubject.subscribe(res => {
+            this.postModel = res;
+        });
     }
 
     // default methods
     ngOnInit() {
-        this.postService.gotoPage(1);
     }
 
-    // defined methods
-    loadProducts(isBack = false) {
-        if (isBack) {
-            this.postService.backData();
-        } else {
-            this.postService.nextData();
-        }
-    }
-
-    // events
-    btnNextClick() {
-        this.loadProducts();
-    }
-
-    btnBackClick() {
-        this.loadProducts(true);
-    }
-
-    btnGotoClick(index = 0) {
-        this.postService.gotoPage(index + 1);
+    btnLoadMore() {
+        this.postService.loadMorePosts();
     }
 }

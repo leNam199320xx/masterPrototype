@@ -16,7 +16,7 @@ const FB = (<any>window).FB;
 export class AppComponent implements OnInit {
   constructor(public http: HttpClient, private router: Router,
     public loginService: NamLoginService,
-    private postService: NamPostService,
+    public postService: NamPostService,
     private windowService: NamWindowService
   ) {
   }

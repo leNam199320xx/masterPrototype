@@ -1,19 +1,18 @@
 import { Component, Input } from '@angular/core';
 import { NamContentModel } from '../../model/content.model';
-
+import { PostsFacebookModel, PostFacebookModel } from '../../model/post.model';
 @Component({
     selector: 'nam-content',
     templateUrl: 'content.component.html',
     styleUrls: ['content.scss']
 })
 export class NamContentComponent {
-    @Input() content: NamContentModel;
+    @Input() content: PostFacebookModel;
     @Input() type: NamContentType = NamContentType.post;
+
     className = '';
     // events
-    btnOpenImageDialog(urlImage: string) {
-
-    }
+    btnOpenImageDialog(urlImage: string) { }
 
     constructor() {
         this.className = (this.type === NamContentType.post)
@@ -21,8 +20,6 @@ export class NamContentComponent {
             : ((this.type === NamContentType.news)
                 ? NamContentStringType.news
                 : NamContentStringType.products);
-
-        console.log(this.className);
     }
 }
 

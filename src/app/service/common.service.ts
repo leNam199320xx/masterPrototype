@@ -3,7 +3,7 @@ import { NamPageModel } from '../model/page.model';
 
 @Injectable()
 export class NamCommonService {
-    isLoadMore = false;
+    isLoadMore = true;
     nextData(_page: NamPageModel) {
         const isOk = (_page.pageIndex < _page.maxPageIndex && _page.pageIndex >= _page.minPageIndex);
         if (isOk) {
