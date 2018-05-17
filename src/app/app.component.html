@@ -25,8 +25,10 @@
     <router-outlet></router-outlet>
   </div>
   <div class='user' *ngIf='loginService.loging'>
-    <div class='user-picture-profile' [ngStyle]='{"background-image" : "url("+loginService.user.pictureProfile+")"}'></div>
-    <div class='user-name'>{{loginService.user.userName}}</div>
+    <ng-container *ngIf='loginService.user'>
+      <div class='user-picture-profile' [ngStyle]='{"background-image" : "url("+loginService.user.pictureProfile+")"}'></div>
+      <div class='user-name'>{{loginService.user.userName}}</div>
+    </ng-container>
   </div>
 
   <div class='bottom-site'>

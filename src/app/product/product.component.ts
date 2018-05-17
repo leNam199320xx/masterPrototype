@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../service/product.service';
 import { NamProductModel } from './product.model';
+import { NamContentType } from '../common/content/content.component';
 
 @Component({
     selector: 'nam-product',
@@ -9,6 +10,7 @@ import { NamProductModel } from './product.model';
 })
 export class NamProductComponent implements OnInit {
     products: NamProductModel[] = [];
+    type: NamContentType = NamContentType.products;
     constructor(public productService: ProductService) {
         this.productService.isLoadMore = false;
         this.productService.productsSubject.subscribe(res => this.products = this.productService.products);

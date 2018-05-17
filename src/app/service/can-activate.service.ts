@@ -47,10 +47,9 @@ export class NamCanActivateService implements CanActivate, CanActivateChild, OnD
         return this.check();
     }
     check() {
-        const loginState = localStorage.getItem('user');
-        const result = (this.currentUser.userId || loginState) ? true : false;
+        const result = (this.currentUser) ? true : false;
         if (!result) {
-            this.router.navigate(['/notfound', 'message']);
+            this.router.navigate(['/notfound']);
         }
         return result;
     }

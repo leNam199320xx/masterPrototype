@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: 'customer',
     loadChildren: './customer/customer.module#NamCustomerModule',
-    canLoad: ['NamCanActivateService']
+    canLoad: [NamCanActivateService]
   },
   {
     path: 'product',

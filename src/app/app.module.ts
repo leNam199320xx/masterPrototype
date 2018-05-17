@@ -15,6 +15,7 @@ import { NamPostService } from './service/post.service';
 import { NamFooterComponent } from './footer/footer.component';
 import { NamUserModel } from './model/user.model';
 import { NamCanActivateService } from './service/can-activate.service';
+import { NamWindowService } from './service/window.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NamCanActivateService } from './service/can-activate.service';
     NamLoginService,
     NamPostService,
     NamCanActivateService,
+    NamWindowService,
     NamUserModel
   ],
   bootstrap: [AppComponent],
