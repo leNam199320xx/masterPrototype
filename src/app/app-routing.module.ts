@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NamNotFoundComponent } from './notfound/notfound.component';
 import { NamCanActivateService } from './service/can-activate.service';
+import { NamPrivacyComponent } from './privacy/privacy.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,12 @@ const routes: Routes = [
     path: '',
     redirectTo: '',
     pathMatch: 'full'
-  }, {
+  },
+  {
+    path: 'privacy-policy',
+    component: NamPrivacyComponent
+  },
+  {
     path: '**',
     component: NamNotFoundComponent
   }

@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     public postService: NamPostService,
     private windowService: NamWindowService
   ) {
+    console.log(1);
   }
 
   @HostListener('window:resize', ['$event']) onresize(_event: Event) {

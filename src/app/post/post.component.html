@@ -1,4 +1,5 @@
 <div class='posts' *ngIf='postService.posts'>
+  <nam-post-create></nam-post-create>
   <ng-container *ngFor='let post of postService.posts.data'>
     <nam-content [content]='post' [type]='postType'></nam-content>
   </ng-container>

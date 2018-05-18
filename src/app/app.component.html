@@ -21,13 +21,24 @@
       </li>
     </ul>
   </div>
+  <div class='nav-left'>
+    <ul>
+      <li>
+        <a href='#'>new</a>
+      </li>
+      <li>
+        <a href='#'>friend</a>
+      </li>
+    </ul>
+  </div>
   <div class='center-site'>
     <router-outlet></router-outlet>
   </div>
+  <nam-friend></nam-friend>
   <div class='user' *ngIf='loginService.loging'>
     <ng-container *ngIf='loginService.user'>
-      <div class='user-picture-profile' [ngStyle]='{"background-image" : "url("+loginService.user.pictureProfile+")"}'></div>
-      <div class='user-name'>{{loginService.user.userName}}</div>
+      <div class='user-picture-profile' [ngStyle]='{"background-image" : "url("+loginService.user.picture.data.url+")"}'></div>
+      <div class='user-name'>{{loginService.user.name}}</div>
     </ng-container>
   </div>
 

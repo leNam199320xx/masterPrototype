@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NamUserModel } from '../model/user.model';
+import { UsersFacebookModel, UserFacebookModel } from '../model/user.model';
 import { NamContentModel } from '../model/content.model';
 import { Observable, Subject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,9 +9,11 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class NamLoginService {
-    user: NamUserModel;
-    userSubject: Subject<NamUserModel> = new Subject();
+    user: UserFacebookModel;
+    friends: UsersFacebookModel;
+    userSubject: Subject<UserFacebookModel> = new Subject();
     postsSubject: Subject<PostsFacebookModel> = new Subject();
+    friendsSubject: Subject<UsersFacebookModel> = new Subject();
     loging = false;
     FB = (<any>window).FB;
     clientId = '500288897006445';
@@ -38,9 +40,20 @@ export class NamLoginService {
         }) : console.log('facebook is not init');
     }
     login() {
-        (this.FB) ? this.FB.login((res) => {
-            this.getLoginStatus();
-        }, { scope: 'public_profile,email,user_posts' }) : console.log('facebook is not init');
+        this.redirectToLoginPage();
+        // (this.FB) ? this.FB.login((res) => {
+        //     this.getLoginStatus();
+        // }, { scope: 'public_profile,email,user_posts' }) : console.log('facebook is not init');
+    }
+    redirectToLoginPage() {
+        const domain = window.location.origin;
+        const randomParam = '{st=state123abc,ds=123456789}';
+        window.location.href = ('https://www.facebook.com/v3.0/dialog/oauth?' +
+            'client_id=' + this.clientId +
+            '&redirect_uri=' + domain +
+            '&response_type=token' +
+            '&auth_type=reauthorize' +
+            '&scope=public_profile,email,user_posts,user_friends');
     }
     logout() {
         (this.FB) ? this.FB.logout(res => {
@@ -50,10 +63,11 @@ export class NamLoginService {
     }
     getLoginStatus() {
         (this.FB) ? this.FB.getLoginStatus((res) => {
+            // console.log(res);
             if (res.authResponse) {
                 this.loging = true;
                 this.getDataUser();
-                this.getDataPost();
+                // this.getDataPost();
             } else {
                 this.loging = false;
             }
@@ -61,26 +75,22 @@ export class NamLoginService {
     }
 
     getDataUser() {
-        (this.FB) ? this.FB.api('/me?fields=id,name', (res) => {
-            this.user = new NamUserModel();
-            this.user.userId = res.id;
-            this.user.userName = res.name;
-            this.user.pictureProfile = 'https://scontent.fhan3-1.fna.fbcdn.net/v/t1.0-9/'
-                + '15871486_946881748780803_7912349944280000329_n.jpg'
-                + '?_nc_cat=0&_nc_eui2=AeG7Ja5dBgIEan8K_BqVbSHUydLOGWespbvjMMkFFLP9rRo6L5lsBxHArsNVMO44lDnEtDR2Oe6QGjdqS9nZCsyZeos'
-                + '1Ol0EgzbUNsTuzD8H8A&oh=74d53ff89ef985b12f126f6fba8998e3&oe=5B7A5982';
-
+        (this.FB) ? this.FB.api('/me?fields=id,name,picture', (res) => {
+            this.user = res as UserFacebookModel;
             this.userSubject.next(this.user);
+            // console.log(this.user);
             if (this.currentUrl) {
                 this.router.navigate([this.currentUrl]);
                 this.currentUrl = null;
             }
+            this.getDataPost();
+            this.getDataFriend();
         }
         ) : console.log('facebook is not init');
     }
 
     getDataPost() {
-        (this.FB) ? this.FB.api('/me?fields=posts.limit(' + this.numberPostsLoaded + '){'
+        (this.FB) ? this.FB.api('/' + this.user.id + '?fields=posts.limit(' + this.numberPostsLoaded + '){'
             + 'full_picture,'
             + 'message,'
             + 'message_tags,'
@@ -88,11 +98,23 @@ export class NamLoginService {
             + 'created_time,'
             + 'updated_time'
             + '}', (res) => {
+                console.log(res);
                 this.postsSubject.next(res.posts as PostsFacebookModel);
             }
         ) : console.log('facebook is not init');
     }
 
+    getDataFriend() {
+        (this.FB) ? this.FB.api('/' + this.user.id + '?fields=friends.limit(' + this.numberPostsLoaded + '){'
+            + 'id,'
+            + 'name,'
+            + 'picture'
+            + '}', (res) => {
+                console.log(res);
+                this.friendsSubject.next(res.friends as UsersFacebookModel);
+            }
+        ) : console.log('facebook is not init');
+    }
     clearData() {
         this.loging = false;
         this.user = null;

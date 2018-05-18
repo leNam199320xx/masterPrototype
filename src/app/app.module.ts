@@ -13,14 +13,18 @@ import { NamNewsService } from './service/news.service';
 import { NamLoginService } from './service/login.service';
 import { NamPostService } from './service/post.service';
 import { NamFooterComponent } from './footer/footer.component';
-import { NamUserModel } from './model/user.model';
+import { UserFacebookModel } from './model/user.model';
 import { NamCanActivateService } from './service/can-activate.service';
 import { NamWindowService } from './service/window.service';
+import { NamPrivacyComponent } from './privacy/privacy.component';
+import { NamFriendComponent } from './friend/friend.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NamFooterComponent,
+    NamPrivacyComponent,
+    NamFriendComponent,
     NamNotFoundComponent
   ],
   imports: [
@@ -36,7 +40,7 @@ import { NamWindowService } from './service/window.service';
     NamPostService,
     NamCanActivateService,
     NamWindowService,
-    NamUserModel
+    UserFacebookModel
   ],
   bootstrap: [AppComponent],
   entryComponents: []

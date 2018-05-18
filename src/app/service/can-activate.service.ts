@@ -1,7 +1,7 @@
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivateChild, CanLoad } from '@angular/router';
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NamUserModel } from '../model/user.model';
+import { UserFacebookModel } from '../model/user.model';
 import { NamLoginService } from '../service/login.service';
 import { Route } from '@angular/compiler/src/core';
 
@@ -9,7 +9,7 @@ import { Route } from '@angular/compiler/src/core';
 @Injectable()
 export class NamCanActivateService implements CanActivate, CanActivateChild, OnDestroy, CanLoad, OnInit {
     constructor(
-        private currentUser: NamUserModel,
+        private currentUser: UserFacebookModel,
         private router: Router,
         private loginService: NamLoginService
     ) {
