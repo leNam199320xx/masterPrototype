@@ -19,6 +19,10 @@ import { NamWindowService } from './service/window.service';
 import { NamPrivacyComponent } from './privacy/privacy.component';
 import { NamChatComponent } from './chat/chat.component';
 
+import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
+import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +36,9 @@ import { NamChatComponent } from './chat/chat.component';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    NamCommonModule
+    NamCommonModule,
+    BrowserModule.withServerTransition({ appId: '1234567890' }),
+    ModuleMapLoaderModule
   ],
   providers: [
     NamCommonService,
@@ -45,4 +51,12 @@ import { NamChatComponent } from './chat/chat.component';
   bootstrap: [AppComponent],
   entryComponents: []
 })
-export class AppModule { }
+export class AppModule {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(APP_ID) private appId: string) {
+    const platform = isPlatformBrowser(platformId) ?
+      'in the browser' : 'on the server';
+    console.log(`Running ${platform} with appId=${appId}`);
+  }
+}

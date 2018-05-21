@@ -1,11 +1,12 @@
-import { HostListener, Injectable, OnDestroy } from '@angular/core';
+import { HostListener, Injectable, OnDestroy, PLATFORM_ID, APP_ID, Inject, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
+import { NamLoginService } from './login.service';
 
 @Injectable()
-export class NamWindowService implements OnDestroy {
+export class NamWindowService implements OnDestroy, OnInit {
     currentBreakpoint: Breakpoints;
     currentBreakpointSubject: Subject<Breakpoints> = new Subject();
-    body = <HTMLBodyElement>document.body;
     breakpoints: Breakpoints[] = [
         {
             query: '(min-width: 1280px)',
@@ -33,14 +34,36 @@ export class NamWindowService implements OnDestroy {
             value: 4
         },
     ];
-    constructor() {
+    window: any;
+    document: Document;
+    body: HTMLElement;
+    windowSubject: Subject<any> = new Subject();
+    constructor(
+        @Inject(PLATFORM_ID) private platformId: Object,
+        @Inject(APP_ID) private appId: string,
+        private loginService: NamLoginService
+    ) {
         this.setBreakpoint();
+        if ((isPlatformBrowser(platformId))) {
+            this.document = <any>document;
+            this.window = <any>window;
+            this.body = this.document.body;
+            this.loginService.FB = this.window.FB;
+            this.loginService.initFB();
+            this.setBreakpoint();
+        }
+    }
+    ngOnInit() {
     }
     @HostListener('window:resize', ['$event']) onresize(_event: Event) {
         this.setBreakpoint();
     }
     matchMedia(_mediaquery) {
-        const result = <MediaQueryList>window.matchMedia(_mediaquery);
+        const result = (this.window) ? <MediaQueryList>this.window.matchMedia(_mediaquery) : {
+            matches: false,
+            media: '',
+            onchange: null
+        };
         return result;
     }
     ngOnDestroy() {

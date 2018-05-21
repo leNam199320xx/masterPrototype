@@ -6,7 +6,7 @@ import { NamPostService } from './service/post.service';
 import { NamWindowService } from './service/window.service';
 import { UsersFacebookModel } from './model/user.model';
 
-const FB = (<any>window).FB;
+
 
 @Component({
   selector: 'nam-root',
@@ -27,7 +27,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.windowService.setBreakpoint();
   }
   ngOnInit() {
-    this.loginService.initFB(FB);
   }
 
   ngAfterViewInit() {
