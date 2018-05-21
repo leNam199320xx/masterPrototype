@@ -3,6 +3,8 @@ export interface NamProductModel {
     name: string;
     url_main: string;
     title: string;
+    preview: string;
     detail: string;
+    url_image: string;
     urls: string[];
 }

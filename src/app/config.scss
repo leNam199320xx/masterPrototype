@@ -1,4 +1,36 @@
 $main-color: #4267b2;
 $main-background-color: #e9ebee;
 $main-text-color: white;
-$main-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$main-font-family: 'Segoe UI',
+Tahoma,
+Geneva,
+Verdana,
+sans-serif;
+$nav-width: 12em;
+.mobile {
+    &.landscape {
+        .col {
+            width: calc(100% / 3);
+        }
+    }
+    .col {
+        width: calc(100% / 2);
+    }
+}
+
+.desktop {
+    .col {
+        width: calc(100% / 6);
+    }
+}
+
+.tablet {
+    &.landscape {
+        .col {
+            width: calc(100% / 5);
+        }
+    }
+    .col {
+        width: calc(100% / 3);
+    }
+}

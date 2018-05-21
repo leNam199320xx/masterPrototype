@@ -1,0 +1,20 @@
+<div class='chat-friend' [ngClass]='{"open": isOpen}' (click)='btnOpen()'>
+    <div class='chat-friend-icon' [ngStyle]='{"background-image": "url("+friend.picture.data.url+")"}'></div>
+    <div class='chat-friend-name'>
+        {{friend.name}}
+    </div>
+</div>
+<div *ngIf='isOpen' class='chat-box'>
+    <div class='chat-text'>
+        <div class='me'>
+            <div class="text">1 2 3 4</div>
+        </div>
+        <div class='friend'>
+            <div class="text">1 2 3 4</div>
+        </div>
+    </div>
+    <div class='chat-control'>
+        <div class="input" aria-placeholder="input a message" contenteditable="true" (input)='inpText($event)' (keypress)='kpsEnter($event)'></div>
+        <button (click)='btnSend()'>Send</button>
+    </div>
+</div>

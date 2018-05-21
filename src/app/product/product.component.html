@@ -1,12 +1,40 @@
-<div class='products'>
-  <ng-container *ngFor='let p of products'>
-    <div class='product'>
-      <div>{{p.title}}</div>
-      <div>{{p.detail}}</div>
+<div class='products-area'>
+  <div class='products-control'>
+    <div class='products-search'>
+      <input placeholder="search" />
+      <button>Search</button>
     </div>
-  </ng-container>
-</div>
+    <div class='products-sort'>
+      <div>Sắp xêp</div>
+      <select>
+        <option>1234</option>
+        <option>1234</option>
+        <option>1234</option>
+        <option>1234</option>
+        <option>1234</option>
+      </select>
+    </div>
+    <div class='products-select'>
+      <nam-checkbox [checkboxes]='checkboxes'></nam-checkbox>
+    </div>
+  </div>
+  <div class='products'>
+    <ng-container *ngFor='let p of products'>
+      <div class='col'>
+        <div class='product'>
+          <div class='product-image image' [ngStyle]='{"background-image": "url("+p.url_image+")"}'></div>
+          <div class='product-text'>
+            <div class='product-title'>{{p.title}}</div>
+            <div class='product-preview'>{{p.title}}</div>
+          </div>
+          <div class='product-control'>
+            <button>{{p.detail}}</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
 
-<nam-paging (nextClick)='btnNextClick()' (backClick)='btnBackClick()' (gotoClick)='btnGotoClick($event)' [page]='productService.page'
-  [isLoadMore]='productService.isLoadMore'></nam-paging>
-  
+  <nam-paging (nextClick)='btnNextClick()' (backClick)='btnBackClick()' (gotoClick)='btnGotoClick($event)' [page]='productService.page'
+    [isLoadMore]='productService.isLoadMore'></nam-paging>
+</div>

@@ -21,20 +21,33 @@
       </li>
     </ul>
   </div>
-  <div class='nav-left'>
-    <ul>
-      <li>
-        <a href='#'>new</a>
-      </li>
-      <li>
-        <a href='#'>friend</a>
-      </li>
-    </ul>
-  </div>
+
   <div class='center-site'>
-    <router-outlet></router-outlet>
+    <div class='nav-left'>
+      <ng-container *ngIf='loginService.friends'>
+        <ul>
+          <li *ngFor='let friend of loginService.friends.data'>
+            <nam-chat [friend]='friend'></nam-chat>
+          </li>
+        </ul>
+      </ng-container>
+    </div>
+    <div class='main'>
+      <router-outlet></router-outlet>
+    </div>
+    <div class='nav-right'>
+      <ul>
+        <li (click)='btnPostsOfPage()'>Page 1
+        </li>
+        <li (click)='btnPostsOfPage()'>Page 2
+        </li>
+        <li (click)='btnPostsOfPage()'>Page 2
+        </li>
+        <li (click)='btnPostsOfPage()'>Page 2
+        </li>
+      </ul>
+    </div>
   </div>
-  <nam-friend></nam-friend>
   <div class='user' *ngIf='loginService.loging'>
     <ng-container *ngIf='loginService.user'>
       <div class='user-picture-profile' [ngStyle]='{"background-image" : "url("+loginService.user.picture.data.url+")"}'></div>

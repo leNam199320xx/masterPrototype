@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { UsersFacebookModel, UserFacebookModel } from '../model/user.model';
+import { UsersFacebookModel, UserFacebookModel, PictureFacebookModel, NamPictureModel } from '../model/user.model';
 import { NamContentModel } from '../model/content.model';
 import { Observable, Subject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
-import { PostsFacebookModel } from '../model/post.model';
+import { PostsFacebookModel, PagingFabookModel } from '../model/post.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
@@ -27,7 +27,9 @@ export class NamLoginService {
         this.userSubject.next(null);
         this.currentUrl = window.location.pathname;
         this.postsSubject.subscribe(res => {
-            console.log(res);
+        });
+        this.friendsSubject.subscribe(res => {
+            this.friends = res;
         });
     }
     initFB(_FB: any) {
@@ -38,12 +40,13 @@ export class NamLoginService {
             xfbml: true,
             version: this.versionFb
         }) : console.log('facebook is not init');
+        this.getLoginStatus();
     }
     login() {
-        this.redirectToLoginPage();
-        // (this.FB) ? this.FB.login((res) => {
-        //     this.getLoginStatus();
-        // }, { scope: 'public_profile,email,user_posts' }) : console.log('facebook is not init');
+        // this.redirectToLoginPage();
+        (this.FB) ? this.FB.login((res) => {
+            this.getLoginStatus();
+        }, { scope: 'public_profile,email,user_posts,user_friends' }) : console.log('facebook is not init');
     }
     redirectToLoginPage() {
         const domain = window.location.origin;
@@ -53,7 +56,7 @@ export class NamLoginService {
             '&redirect_uri=' + domain +
             '&response_type=token' +
             '&auth_type=reauthorize' +
-            '&scope=public_profile,email,user_posts,user_friends');
+            '&scope=public_profile,email,user_posts');
     }
     logout() {
         (this.FB) ? this.FB.logout(res => {
@@ -63,7 +66,7 @@ export class NamLoginService {
     }
     getLoginStatus() {
         (this.FB) ? this.FB.getLoginStatus((res) => {
-            // console.log(res);
+            console.log(res);
             if (res.authResponse) {
                 this.loging = true;
                 this.getDataUser();
@@ -98,7 +101,6 @@ export class NamLoginService {
             + 'created_time,'
             + 'updated_time'
             + '}', (res) => {
-                console.log(res);
                 this.postsSubject.next(res.posts as PostsFacebookModel);
             }
         ) : console.log('facebook is not init');
@@ -111,9 +113,20 @@ export class NamLoginService {
             + 'picture'
             + '}', (res) => {
                 console.log(res);
-                this.friendsSubject.next(res.friends as UsersFacebookModel);
+                // this.friendsSubject.next(res.friends as UsersFacebookModel);
+
             }
         ) : console.log('facebook is not init');
+
+        const testModel = new UsersFacebookModel();
+        testModel.paging = {
+            next: '',
+            previous: ''
+        } as PagingFabookModel;
+        testModel.data.push(this.user);
+        testModel.data.push(this.user);
+        testModel.data.push(this.user);
+        this.friendsSubject.next(testModel);
     }
     clearData() {
         this.loging = false;

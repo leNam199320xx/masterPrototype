@@ -1,0 +1,8 @@
+<div class='checkboxes'>
+    <ng-container *ngFor='let chk of checkboxes'>
+        <div class='checkbox' (click)='checkboxesChange(chk)'>
+            <div class='square' [ngClass]='{"checked": chk.value}'></div>
+            <div class='text'>{{chk.text}}</div>
+        </div>
+    </ng-container>
+</div>

@@ -17,14 +17,14 @@ import { UserFacebookModel } from './model/user.model';
 import { NamCanActivateService } from './service/can-activate.service';
 import { NamWindowService } from './service/window.service';
 import { NamPrivacyComponent } from './privacy/privacy.component';
-import { NamFriendComponent } from './friend/friend.component';
+import { NamChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NamFooterComponent,
     NamPrivacyComponent,
-    NamFriendComponent,
+    NamChatComponent,
     NamNotFoundComponent
   ],
   imports: [

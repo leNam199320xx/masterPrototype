@@ -1,9 +1,10 @@
-import { Component, ViewEncapsulation, OnInit, HostListener } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, HostListener, OnChanges, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NamLoginService } from './service/login.service';
 import { NamPostService } from './service/post.service';
 import { NamWindowService } from './service/window.service';
+import { UsersFacebookModel } from './model/user.model';
 
 const FB = (<any>window).FB;
 
@@ -13,13 +14,13 @@ const FB = (<any>window).FB;
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['app.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
+  friends: UsersFacebookModel;
   constructor(public http: HttpClient, private router: Router,
     public loginService: NamLoginService,
     public postService: NamPostService,
     private windowService: NamWindowService
   ) {
-    console.log(1);
   }
 
   @HostListener('window:resize', ['$event']) onresize(_event: Event) {
@@ -27,7 +28,15 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
     this.loginService.initFB(FB);
+  }
+
+  ngAfterViewInit() {
+
     this.loginService.getLoginStatus();
+  }
+
+  btnPostsOfPage() {
+
   }
 
   btnLogin() {

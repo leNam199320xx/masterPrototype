@@ -19,7 +19,7 @@ export class NamWindowService implements OnDestroy {
         },
         {
             query: '(min-width: 600px) and (max-width: 839px)',
-            device: 'tablet',
+            device: 'tablet portrait',
             value: 2
         },
         {
@@ -29,7 +29,7 @@ export class NamWindowService implements OnDestroy {
         },
         {
             query: '(min-width: 0px) and (max-width: 599px)',
-            device: 'mobile',
+            device: 'mobile portrait',
             value: 4
         },
     ];

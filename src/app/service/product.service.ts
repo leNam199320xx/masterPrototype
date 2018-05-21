@@ -13,7 +13,7 @@ export class ProductService {
     productsObserve: Observable<NamProductModel[]> = new Observable();
     isLoadMore = false;
     page: NamPageModel;
-    pageSize = 10;
+    pageSize = 30;
     constructor(private http: HttpClient, private commonService: NamCommonService) {
         this.productsSubject.subscribe(res => {
             this.products = res;
@@ -31,7 +31,9 @@ export class ProductService {
                 name: 'product ' + id,
                 detail: 'product ' + id,
                 title: 'new product ' + id,
+                preview: 'new product ',
                 url_main: '/',
+                url_image: '../../assets/images/bo-quan-ao-bibos-dai-tay-be-trai-nhieu-mau-114575-5_1.jpg',
                 urls: ['/']
             });
         }
