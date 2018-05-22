@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NamPageModel } from '../model/page.model';
-import { NamNewsModel } from '../news/news.model';
+import { NamNewsModel } from '../client/news/news.model';
 import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { NamCommonService } from './common.service';

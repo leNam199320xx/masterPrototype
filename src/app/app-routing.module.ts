@@ -1,32 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NamNotFoundComponent } from './notfound/notfound.component';
+import { NamNotFoundComponent } from './client/notfound/notfound.component';
 import { NamCanActivateService } from './service/can-activate.service';
-import { NamPrivacyComponent } from './privacy/privacy.component';
+import { NamPrivacyComponent } from './client/privacy/privacy.component';
 
 const routes: Routes = [
   {
     path: 'customer',
-    loadChildren: './customer/customer.module#NamCustomerModule',
+    loadChildren: './client/customer/customer.module#NamCustomerModule',
     canLoad: [NamCanActivateService]
   },
   {
     path: 'product',
-    loadChildren: './product/product.module#NamProductModule',
+    loadChildren: './client/product/product.module#NamProductModule',
     canLoad: [NamCanActivateService]
   },
   {
     path: 'news',
-    loadChildren: './news/news.module#NamNewsModule'
+    loadChildren: './client/news/news.module#NamNewsModule'
   },
   {
     path: 'post',
-    loadChildren: './post/post.module#NamPostModule',
+    loadChildren: './client/post/post.module#NamPostModule',
     canLoad: [NamCanActivateService]
   },
   {
     path: '',
-    loadChildren: './home/home.module#NamHomeModule'
+    loadChildren: './client/home/home.module#NamHomeModule'
   },
   {
     path: '',

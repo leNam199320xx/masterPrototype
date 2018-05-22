@@ -1,5 +1,5 @@
-import { NamNewsModel } from '../news/news.model';
-import { NamProductModel } from '../product/product.model';
+import { NamNewsModel } from '../client/news/news.model';
+import { NamProductModel } from '../client/product/product.model';
 import { PagingFabookModel } from './post.model';
 
 export class UserFacebookModel {

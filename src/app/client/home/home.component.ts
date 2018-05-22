@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { NamLoginService } from '../service/login.service';
+import { NamLoginService } from '../../service/login.service';
 
 @Component({
     selector: 'nam-home',

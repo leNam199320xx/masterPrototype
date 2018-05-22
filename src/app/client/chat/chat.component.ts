@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserFacebookModel } from '../model/user.model';
+import { UserFacebookModel } from '../../model/user.model';
 
 @Component({
     selector: 'nam-chat',

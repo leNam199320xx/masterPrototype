@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NamNewsService } from '../service/news.service';
-import { NamContentType } from '../common/content/content.component';
+import { NamNewsService } from '../../service/news.service';
+import { NamContentType } from '../../common/content/content.component';
 
 @Component({
     selector: 'nam-news',

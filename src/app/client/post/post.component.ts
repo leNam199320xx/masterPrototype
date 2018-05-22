@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NamPostService } from '../service/post.service';
-import { NamLoginService } from '../service/login.service';
-import { NamContentType } from '../common/content/content.component';
-import { PostFacebookModel, PostsFacebookModel } from '../model/post.model';
+import { NamPostService } from '../../service/post.service';
+import { NamLoginService } from '../../service/login.service';
+import { NamContentType } from '../../common/content/content.component';
+import { PostFacebookModel, PostsFacebookModel } from '../../model/post.model';
 
 @Component({
     selector: 'nam-post',

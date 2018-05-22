@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductService } from '../service/product.service';
+import { ProductService } from '../../service/product.service';
 import { NamProductModel } from './product.model';
-import { NamContentType } from '../common/content/content.component';
-import { NamCheckboxModel } from '../common/checkbox/checkbox.component';
+import { NamContentType } from '../../common/content/content.component';
+import { NamCheckboxModel } from '../../common/checkbox/checkbox.component';
 
 @Component({
     selector: 'nam-product',

@@ -22,25 +22,6 @@ const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/mai
 import { ngExpressEngine } from '@nguniversal/express-engine';
 // Import module map for lazy loading
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
-
-// Mongo CLoud
-const stitch = require('mongodb-stitch');
-const clientPromise = stitch.StitchClientFactory.create('ifakebook-eqvwi');
-
-clientPromise.then(client => {
-  const db = client.service('mongodb', 'mongodb-atlas').db('ifakebook_db');
-  client.login().then(() =>
-    db.collection('user').updateOne({ owner_id: client.authedId() }, { $set: { number: 42 } }, { upsert: true })
-  ).then(() =>
-    db.collection('user').find({ owner_id: client.authedId() }).limit(100).execute()
-  ).then(docs => {
-    console.log('Found docs', docs)
-    console.log('[MongoDB Stitch] Connected to Stitch')
-  }).catch(err => {
-    console.error(err)
-  });
-});
-
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
   providers: [
