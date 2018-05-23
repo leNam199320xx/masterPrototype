@@ -18,23 +18,8 @@
       <nam-checkbox [checkboxes]='checkboxes'></nam-checkbox>
     </div>
   </div>
-  <div class='products'>
-    <ng-container *ngFor='let p of products'>
-      <div class='col'>
-        <div class='product'>
-          <div class='product-image image' [ngStyle]='{"background-image": "url("+p.url_image+")"}'></div>
-          <div class='product-text'>
-            <div class='product-title'>{{p.title}}</div>
-            <div class='product-preview'>{{p.title}}</div>
-          </div>
-          <div class='product-control'>
-            <button>{{p.detail}}</button>
-          </div>
-        </div>
-      </div>
-    </ng-container>
-  </div>
 
-  <nam-paging (nextClick)='btnNextClick()' (backClick)='btnBackClick()' (gotoClick)='btnGotoClick($event)' [page]='productService.page'
-    [isLoadMore]='productService.isLoadMore'></nam-paging>
+  <nam-list-product [products]='products1' [page]="page1"></nam-list-product>
+  <nam-list-product [products]='products2' [page]="page2"></nam-list-product>
+  <nam-list-product [products]='products3' [page]="page3"></nam-list-product>
 </div>

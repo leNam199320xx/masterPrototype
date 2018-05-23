@@ -9,18 +9,28 @@ export class NamCommonService {
         if (isOk) {
             _page.pageIndex++;
         }
-        return (isOk);
+        return ({
+            status: isOk,
+            page: _page
+        });
     }
     backData(_page: NamPageModel) {
         const isOk = (_page.pageIndex > _page.minPageIndex && _page.pageIndex <= _page.maxPageIndex);
         if (isOk) {
             _page.pageIndex--;
         }
-        return (isOk);
+        return ({
+            status: isOk,
+            page: _page
+        });
     }
 
     gotoPage(_page: NamPageModel, _pageNumber: number) {
         _page.pageIndex = _pageNumber - 1;
-        return (_page.pageIndex >= _page.minPageIndex && _page.pageIndex <= _page.maxPageIndex);
+        const isOk = (_page.pageIndex >= _page.minPageIndex && _page.pageIndex <= _page.maxPageIndex);
+        return ({
+            status: isOk,
+            page: _page
+        });
     }
 }

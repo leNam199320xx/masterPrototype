@@ -1,0 +1,31 @@
+@import '../../config.scss';
+.products {
+  width: 100%;
+  display: block;
+  position: relative;
+  .col {
+    padding: 0.25em;
+    display: inline-block;
+    .product {
+      display: inline-block;
+      width: 100%;
+      background: white;
+      .product-image {
+        display: inline-block;
+        width: 100%;
+        padding-top: 100%;
+      }
+      .product-title {
+        background-color: $main-color;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 0.25em 0.5em 0.25em 0.5em;
+      }
+      .product-preview {
+        height: 3em;
+        overflow-y: hidden;
+      }
+    }
+  }
+}

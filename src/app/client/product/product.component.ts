@@ -3,6 +3,7 @@ import { ProductService } from '../../service/product.service';
 import { NamProductModel } from './product.model';
 import { NamContentType } from '../../common/content/content.component';
 import { NamCheckboxModel } from '../../common/checkbox/checkbox.component';
+import { NamPageModel } from '../../model/page.model';
 
 @Component({
     selector: 'nam-product',
@@ -10,7 +11,9 @@ import { NamCheckboxModel } from '../../common/checkbox/checkbox.component';
     styleUrls: ['product.scss']
 })
 export class NamProductComponent implements OnInit {
-    products: NamProductModel[] = [];
+    products1: NamProductModel[] = [];
+    products2: NamProductModel[] = [];
+    products3: NamProductModel[] = [];
     checkboxes: NamCheckboxModel[] = [
         { text: 'checkbox 1', value: true },
         { text: 'checkbox 1', value: false },
@@ -18,34 +21,26 @@ export class NamProductComponent implements OnInit {
         { text: 'checkbox 1', value: true }
     ];
     type: NamContentType = NamContentType.products;
+    page1: NamPageModel = new NamPageModel(10, 30);
+    page2: NamPageModel = new NamPageModel(50, 30);
+    page3: NamPageModel = new NamPageModel(200, 30);
     constructor(public productService: ProductService) {
         this.productService.isLoadMore = false;
-        this.productService.productsSubject.subscribe(res => this.products = this.productService.products);
+        this.productService.getProductsFromServer(this.products1, this.page1).subscribe(res => {
+            this.products1 = res;
+        });
+
+        this.productService.getProductsFromServer(this.products2, this.page2).subscribe(res => {
+            this.products2 = res;
+        });
+
+        this.productService.getProductsFromServer(this.products3, this.page3).subscribe(res => {
+            this.products3 = res;
+        });
+
     }
     // default methods
     ngOnInit() {
-        this.productService.gotoPage(1);
     }
 
-    // defined methods
-    loadProducts(isBack = false) {
-        if (isBack) {
-            this.productService.backData();
-        } else {
-            this.productService.nextData();
-        }
-    }
-
-    // events
-    btnNextClick() {
-        this.loadProducts();
-    }
-
-    btnBackClick() {
-        this.loadProducts(true);
-    }
-
-    btnGotoClick(index = 0) {
-        this.productService.gotoPage(index + 1);
-    }
 }

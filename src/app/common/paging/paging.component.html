@@ -5,7 +5,7 @@
 
     <ng-container *ngFor='let ix of page.pageLengths '>
         <ng-container *ngIf='ix < sizeOfPaging * (indexOfPaging + 1) && ix >= sizeOfPaging * indexOfPaging'>
-            <button (click)='btnGotoClick(ix)' [ngClass]='{"selected": ix === page.pageIndex }'> {{ix + 1}}</button>
+            <button (click)='btnGotoClick(ix + 1)' [ngClass]='{"selected": ix === page.pageIndex }'> {{ix + 1}}</button>
         </ng-container>
     </ng-container>
     

@@ -10,6 +10,7 @@ import { NamPageModel } from '../../model/page.model';
 export class NamPagingComponent implements OnInit {
     @Input() page: NamPageModel;
     @Input() isLoadMore = false;
+    @Input() size = 5;
     @Output() backClick = new EventEmitter<any>();
     @Output() nextClick = new EventEmitter<any>();
     @Output() gotoClick = new EventEmitter<any>();
