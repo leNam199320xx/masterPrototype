@@ -4,7 +4,7 @@ import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader'
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
-import { CloudConnectionService } from './service/cloudConnection';
+import { CloudConnectionService } from './service/cloud-connection.service';
 
 @NgModule({
   imports: [

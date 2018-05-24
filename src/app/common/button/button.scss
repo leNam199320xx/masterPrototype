@@ -1,0 +1,64 @@
+@import '../../config.scss';
+$defaultSize: 1em;
+$defaultPadding: 0.75em;
+.button-background {
+  background-color: white;
+  display: inline-block;
+}
+
+button {
+  max-width: 100%;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+@mixin ButtonDefine($name, $size: $defaultSize, $padding: $defaultPadding, $color: $btnColor) {
+  button {
+    font-size: $size;
+    padding: $padding;
+    color: $color;
+    border-style: solid;
+    border-color: $color;
+    &.#{$name} {
+      font-size: $size;
+      padding: $padding;
+    }
+    &.btn-selected {
+      background-color: rgba($color: $color, $alpha: 0.2);
+    }
+    &.has-border {
+      border-width: 1px;
+    }
+    &:hover {
+      background-color: rgba($color: $color, $alpha: 0.1);
+    }
+    &:active {
+      background-color: rgba($color: $color, $alpha: 0.2);
+    }
+  }
+}
+
+@mixin StateElement($state, $color) {
+  .type-#{$state} {
+    border-color: $color;
+    color: $color;
+    background-color: transparent;
+    &.btn-selected {
+      background-color: rgba($color: $color, $alpha: 0.2);
+    }
+    &:hover {
+      background-color: rgba($color: $color, $alpha: 0.1);
+    }
+    &:active {
+      background-color: rgba($color: $color, $alpha: 0.2);
+    }
+  }
+}
+
+@include StateElement('danger', $red);
+@include StateElement('success', $green);
+@include StateElement('warning', $orange);
+@include ButtonDefine('real', 1em, 0.1em);
+@include ButtonDefine('small', 0.75em, 0.5em);
+@include ButtonDefine('large', 2em, 0.5em);
+@include ButtonDefine('normal');

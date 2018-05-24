@@ -22,7 +22,7 @@ import { NamChatComponent } from './client/chat/chat.component';
 import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { CloudConnectionService } from './service/cloudConnection';
+import { CloudConnectionService } from './service/cloud-connection.service';
 
 @NgModule({
   declarations: [

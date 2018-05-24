@@ -11,12 +11,10 @@
       width: 100%;
       background: white;
       .product-image {
-        display: inline-block;
-        width: 100%;
-        padding-top: 100%;
+        @include ImageSquare();
       }
       .product-title {
-        background-color: $main-color;
+        background-color: $mainColor;
         color: white;
         font-weight: bold;
         text-transform: uppercase;

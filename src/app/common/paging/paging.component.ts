@@ -9,42 +9,70 @@ import { NamPageModel } from '../../model/page.model';
 
 export class NamPagingComponent implements OnInit {
     @Input() page: NamPageModel;
-    @Input() isLoadMore = false;
-    @Input() size = 5;
     @Output() backClick = new EventEmitter<any>();
     @Output() nextClick = new EventEmitter<any>();
     @Output() gotoClick = new EventEmitter<any>();
-
-    indexOfPaging = 0;
-    lengthOfPaging = 0;
-    sizeOfPaging = 5;
-
+    sizePaging = 5;
+    indexPaging = 0;
+    minIndexPaging = 0;
+    maxIndexPaging = 0;
+    pagings: number[] = [];
     ngOnInit() {
-        this.lengthOfPaging = Math.round(this.page.pageLength / this.sizeOfPaging);
-        this.setIndex();
+        this.maxIndexPaging = Math.floor(this.page.pageLength / this.sizePaging);
+        this.setNumberPaging(0, true);
     }
 
     btnBackClick() {
         this.backClick.emit();
-        this.setIndex();
+        this.setIndexPaging();
     }
 
     btnNextClick() {
         this.nextClick.emit();
-        this.setIndex();
+        this.setIndexPaging();
     }
-    setIndex() {
-        this.indexOfPaging = Math.floor(this.page.pageIndex / this.sizeOfPaging);
+
+    setIndexPaging() {
+        this.indexPaging = Math.floor(this.page.pageIndex / this.sizePaging);
+        this.setNumberPaging(0, true);
     }
+
     btnGotoClick(_index: number) {
-        this.gotoClick.emit(_index);
+        this.page.pageIndex = _index;
+        this.gotoClick.emit(this.page.pageIndex);
+    }
+
+    setIndex() {
+        this.page.pageIndex = (this.page.pageIndex < this.page.maxPageIndex) ? +1
+            : (this.page.pageIndex > this.page.minPageIndex ? -1 : 0);
     }
 
     nextPaging() {
-        this.indexOfPaging += (this.indexOfPaging >= 0 && this.indexOfPaging < this.lengthOfPaging - 1) ? 1 : 0;
+        this.setNumberPaging((this.maxIndexPaging > this.indexPaging && this.minIndexPaging <= this.indexPaging) ? 1 : 0);
     }
 
     backPaging() {
-        this.indexOfPaging -= (this.indexOfPaging > 0 && this.indexOfPaging <= this.lengthOfPaging - 1) ? 1 : 0;
+        this.setNumberPaging(this.maxIndexPaging >= this.indexPaging && this.minIndexPaging < this.indexPaging ? -1 : 0);
+    }
+    checkSelected(_index: number) {
+        return _index === this.page.pageIndex;
+    }
+    setNumberPaging(_indexPaging, _started = false) {
+        const results = [];
+        let count = 0;
+        this.indexPaging += _indexPaging;
+        if (_indexPaging === 0 && !_started) {
+            return;
+        }
+        for (let i = 0; i < this.page.pageLength; i++) {
+            if (this.indexPaging * this.sizePaging <= i && (this.indexPaging + 1) * this.sizePaging > i) {
+                results.push(i);
+                count++;
+                if (count === this.sizePaging) {
+                    break;
+                }
+            }
+        }
+        this.pagings = results;
     }
 }

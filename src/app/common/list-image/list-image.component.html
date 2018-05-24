@@ -1,0 +1,12 @@
+<div class="list-image">
+  <div class='image-tag' *ngFor='let im of images'>
+    <div class="image-url" [ngStyle]='{"background-image": "url(" + im.url + ")"}'></div>
+    <div class='image-title'><a href='{{im.link}}'>{{im.title}}</a></div>
+  </div>
+  <div class='image-control'>
+      <nam-button title='click me !' [hasBorder]='true'></nam-button>
+      <nam-button title='click me !' [hasBorder]='true' className="real type-danger" btnSelected='true'></nam-button>
+      <nam-button title='click me !' [hasBorder]='true' className="small type-success"></nam-button>
+      <nam-button title='click me !' [hasBorder]='true' className='large'></nam-button>
+  </div>
+</div>

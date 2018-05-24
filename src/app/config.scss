@@ -1,36 +1,49 @@
-$main-color: #4267b2;
-$main-background-color: #e9ebee;
-$main-text-color: white;
-$main-font-family: 'Segoe UI',
+$mainColor: #4267b2;
+$btnColor: $mainColor;
+$mainBackgroundColor: #e9ebee;
+$mainTextColor: white;
+$mainTextFamily: 'Segoe UI',
 Tahoma,
 Geneva,
 Verdana,
 sans-serif;
 $nav-width: 12em;
+$red: red;
+$blue: blue;
+$green: green;
+$orange: orange;
 .mobile {
-    &.landscape {
-        .col {
-            width: calc(100% / 3);
-        }
-    }
+  &.landscape {
     .col {
-        width: calc(100% / 2);
+      width: calc(100% / 3);
     }
+  }
+  .col {
+    width: calc(100% / 2);
+  }
 }
 
 .desktop {
-    .col {
-        width: calc(100% / 6);
-    }
+  .col {
+    width: calc(100% / 6);
+  }
 }
 
 .tablet {
-    &.landscape {
-        .col {
-            width: calc(100% / 5);
-        }
-    }
+  &.landscape {
     .col {
-        width: calc(100% / 3);
+      width: calc(100% / 5);
     }
+  }
+  .col {
+    width: calc(100% / 3);
+  }
+}
+
+@mixin ImageSquare() {
+  padding-top: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }

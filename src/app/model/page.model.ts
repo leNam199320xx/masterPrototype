@@ -10,6 +10,7 @@ export class NamPageModel {
     pageSize: number;
     pageLoadeds: boolean[] = [];
     pageData: any[] = [];
+    loadMore = false;
 
     constructor(_count: number, _pageSize = 10, _currentPage = 1) {
         this.page = _currentPage;

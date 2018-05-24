@@ -2,7 +2,7 @@
   <ng-container *ngFor='let p of products'>
     <div class='col'>
       <div class='product'>
-        <div class='product-image image' [ngStyle]='{"background-image": "url("+p.url_image+")"}'></div>
+        <div class='product-image' [ngStyle]='{"background-image": "url("+p.url_image+")"}'></div>
         <div class='product-text'>
           <div class='product-title'>{{p.title}}</div>
           <div class='product-preview'>{{p.title}}</div>
@@ -13,6 +13,5 @@
       </div>
     </div>
   </ng-container>
-  <nam-paging (nextClick)='btnNextClick()' (backClick)='btnBackClick()' (gotoClick)='btnGotoClick($event)' [page]='page'
-    [isLoadMore]='isLoadMore'></nam-paging>
+  <nam-paging (nextClick)='btnNextClick()' (backClick)='btnBackClick()' (gotoClick)='btnGotoClick($event)' [page]='page'></nam-paging>
 </div>

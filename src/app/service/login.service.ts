@@ -35,18 +35,10 @@ export class NamLoginService implements OnInit {
         this.friendsSubject.subscribe(res => {
             this.friends = res;
         });
-        // this.windowService.windowSubject.subscribe(res => {
-        //     this.FB = this.windowService.window.FB;
-        //     this.currentUrl = this.windowService.window.location.pathname;
-        //     this.initFB();
-        //     console.log('login');
-        // });
     }
     ngOnInit() {
     }
     initFB() {
-        // this.FB = (this.windowService.window) ? this.windowService.window.FB : undefined;
-        // this.currentUrl = (this.windowService.window) ? this.windowService.window.location.pathname : undefined;
         (this.FB) ? this.FB.init({
             appId: this.clientId,
             cookie: true,
@@ -56,7 +48,6 @@ export class NamLoginService implements OnInit {
         this.getLoginStatus();
     }
     login() {
-        // this.redirectToLoginPage();
         (this.FB) ? this.FB.login((res) => {
             this.getLoginStatus();
         }, { scope: 'public_profile,email,user_posts,user_friends' }) : console.log('facebook is not inited, can not login');
@@ -136,8 +127,6 @@ export class NamLoginService implements OnInit {
             next: '',
             previous: ''
         } as PagingFabookModel;
-        testModel.data.push(this.user);
-        testModel.data.push(this.user);
         testModel.data.push(this.user);
         this.friendsSubject.next(testModel);
     }

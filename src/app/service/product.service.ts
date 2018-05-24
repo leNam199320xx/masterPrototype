@@ -14,7 +14,7 @@ export class ProductService {
     getProductsFromServer(_currentProducts: NamProductModel[], _page: NamPageModel) {
         let productsObserve: Observable<NamProductModel[]> = new Observable();
         const testData: NamProductModel[] = [];
-        console.log(_page);
+        console.log(_page.pageIndex);
         for (let i = 0; i < _page.pageSize; i++) {
             const id = i + _page.pageIndex * _page.pageSize;
             if (id < _page.count) {

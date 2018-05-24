@@ -2,16 +2,16 @@
 .chat-friend {
     // height: 2em;
     padding: 0.25em;
-    border: 1px solid $main-color;
-    color: $main-color;
+    border: 1px solid $mainColor;
+    color: $mainColor;
     background: white;
     display: flex;
     &:hover {
-        background-color: $main-color;
+        background-color: $mainColor;
         color: white;
     }
     &.open {
-        background-color: $main-color;
+        background-color: $mainColor;
         color: white;
     }
     .chat-friend-icon {
@@ -30,9 +30,9 @@
 }
 
 .chat-box {
-    color: $main-color;
-    border-left: 1px solid $main-color;
-    border-right: 1px solid $main-color;
+    color: $mainColor;
+    border-left: 1px solid $mainColor;
+    border-right: 1px solid $mainColor;
     position: relative;
     .chat-text {
         overflow-y: auto;
@@ -54,7 +54,7 @@
         .friend {
             text-align: right;
             .text {
-                background-color: $main-color;
+                background-color: $mainColor;
                 color: white;
             }
         }
@@ -63,7 +63,7 @@
         width: 100%;
         display: flex;
         padding: 0.25em;
-        background-color: $main-color;
+        background-color: $mainColor;
         align-items: flex-end;
         .input {
             width: 100%;
