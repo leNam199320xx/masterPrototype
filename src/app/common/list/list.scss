@@ -1,0 +1,20 @@
+@import '../../config.scss';
+.list {
+    display: flex;
+    flex-direction: column;
+    .item,
+    a {
+        height: 3em;
+        display: flex;
+        align-items: center;
+        .item-left {
+            width: 3em;
+            .item-image {
+                @include ImageSquare();
+            }
+        }
+        .item-text {
+            padding: 0.5em;
+        }
+    }
+}

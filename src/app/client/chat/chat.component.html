@@ -15,6 +15,6 @@
     </div>
     <div class='chat-control'>
         <div class="input" aria-placeholder="input a message" contenteditable="true" (input)='inpText($event)' (keypress)='kpsEnter($event)'></div>
-        <nam-button (btnClick)='btnSend()' title="Send" className='small type-success'></nam-button>
+        <nam-button (btnClick)='btnSend()' title="Send" className='small type-success' [hasBackground]='true'></nam-button>
     </div>
 </div>

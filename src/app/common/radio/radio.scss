@@ -1,0 +1,33 @@
+@import '../../config.scss';
+.list-radio {
+    // display: flex;
+    // flex-direction: column;
+    display: inline-block;
+    font-size: 1em;
+    .radio {
+        padding: 0.5em;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        .radio-dot {
+            display: inline-block;
+            border-radius: 50%;
+            border-width: 1px;
+            border-style: solid;
+            border-color: $btnColor;
+            padding: 2px;
+            height: 1em;
+            width: 1em;
+            .radio-checked {
+                background-color: $btnColor;
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+        .radio-content {
+            display: inline-block;
+            padding-left: 0.5em;
+        }
+    }
+}

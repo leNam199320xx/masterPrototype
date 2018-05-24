@@ -1,0 +1,15 @@
+<div class='list'>
+    <div class='item' *ngFor='let item of list' [ngClass]='{"enabled": item.enabled}'>
+        <ng-container *ngIf='isLinkList'>
+            <a routerLink='item.url'>
+                <div *ngIf="item.image" class='item-left'>
+                    <div class="item-image" [ngStyle]='{"background-image": "url(" + item.image + ")"}'></div>
+                </div>
+                <div class="item-text">{{item.text}}</div>
+            </a>
+        </ng-container>
+        <ng-container *ngIf='!isLinkList'>
+            <div class="item-text" (click)='btnItemClick(item)'>{{item.text}}</div>
+        </ng-container>
+    </div>
+</div>

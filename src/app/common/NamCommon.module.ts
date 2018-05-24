@@ -6,6 +6,8 @@ import { NamCheckboxComponent } from './checkbox/checkbox.component';
 import { NamListProductComponent } from './list-product/list.component';
 import { NamListImageComponent } from './list-image/list-image.component';
 import { NamButtonComponent } from './button/button.component';
+import { NamRadioComponent } from './radio/radio.component';
+import { NamListComponent } from './list/list.component';
 
 @NgModule({
     declarations: [
@@ -15,6 +17,8 @@ import { NamButtonComponent } from './button/button.component';
         NamListProductComponent,
         NamListImageComponent,
         NamButtonComponent,
+        NamRadioComponent,
+        NamListComponent
     ],
     exports: [
         NamPagingComponent,
@@ -23,6 +27,8 @@ import { NamButtonComponent } from './button/button.component';
         NamListProductComponent,
         NamListImageComponent,
         NamButtonComponent,
+        NamRadioComponent,
+        NamListComponent
     ],
     imports: [CommonModule]
 })

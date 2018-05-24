@@ -1,0 +1,12 @@
+<div class='list-radio'>
+    <ng-container *ngFor='let rd of radios; let ix = index'>
+        <div class='radio' (click)='btnCheck(ix)'>
+            <div class='radio-dot'>
+                <div *ngIf='rd.value' class='radio-checked'></div>
+            </div>
+            <div class='radio-content'>
+                {{rd.text}}
+            </div>
+        </div>
+    </ng-container>
+</div>

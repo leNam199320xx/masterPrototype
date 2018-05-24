@@ -10,6 +10,7 @@ export class NamButtonComponent {
     @Input() btnSelected: boolean;
     @Input() hasBorder = true;
     @Input() className: NamButtonSize;
+    @Input() hasBackground = false;
     @Input() width: string;
     @Output() btnClick: EventEmitter<any> = new EventEmitter();
 }

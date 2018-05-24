@@ -3,7 +3,7 @@
     justify-content: center;
     .paging-controls {
         padding: 1em;
-        display: inline-block;
+        display: flex;
         button {
             &.selected {
                 background-color: red;
