@@ -16,49 +16,9 @@ import { StitchClientFactory } from 'mongodb-stitch';
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['app.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  friends: UsersFacebookModel;
-  constructor(public http: HttpClient, private router: Router,
-    public loginService: NamLoginService,
-    public postService: NamPostService,
-    private windowService: NamWindowService
+export class AppComponent {
+  constructor(
   ) {
   }
 
-  @HostListener('window:resize', ['$event']) onresize(_event: Event) {
-    this.windowService.setBreakpoint();
-  }
-  ngOnInit() {
-    // const clientPromise = StitchClientFactory.create('ifakebook-eqvwi');
-
-    // clientPromise.then(client => {
-    //   const db = client.service('mongodb', 'mongodb-atlas').db('ifakebook_db');
-    //   client.login().then(() =>
-    //     db.collection('user').updateOne({ owner_id: client.authedId() }, { $set: { number: 42 } }, { upsert: true })
-    //   ).then(() =>
-    //     db.collection('user').find({ owner_id: client.authedId() }).limit(100).execute()
-    //   ).then(docs => {
-    //     console.log('Found docs', docs)
-    //     console.log('[MongoDB Stitch] Connected to Stitch')
-    //   }).catch(err => {
-    //     console.error(err)
-    //   });
-    // });
-  }
-
-  ngAfterViewInit() {
-
-    this.loginService.getLoginStatus();
-  }
-
-  btnPostsOfPage() {
-
-  }
-
-  btnLogin() {
-    this.loginService.login();
-  }
-  btnLogout() {
-    this.loginService.logout();
-  }
 }

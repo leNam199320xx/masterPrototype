@@ -23,14 +23,9 @@ import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader'
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CloudConnectionService } from './service/cloud-connection.service';
-
 @NgModule({
   declarations: [
-    AppComponent,
-    NamFooterComponent,
-    NamPrivacyComponent,
-    NamChatComponent,
-    NamNotFoundComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +33,8 @@ import { CloudConnectionService } from './service/cloud-connection.service';
     HttpClientModule,
     AppRoutingModule,
     NamCommonModule,
-    BrowserModule.withServerTransition({ appId: '1234567890' }),
+
+    BrowserModule.withServerTransition({ appId: '1234567890' })
     // ModuleMapLoaderModule
   ],
   providers: [

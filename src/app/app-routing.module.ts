@@ -6,27 +6,12 @@ import { NamPrivacyComponent } from './client/privacy/privacy.component';
 
 const routes: Routes = [
   {
-    path: 'customer',
-    loadChildren: './client/customer/customer.module#NamCustomerModule',
-    canLoad: [NamCanActivateService]
-  },
-  {
-    path: 'product',
-    loadChildren: './client/product/product.module#NamProductModule',
-    canLoad: [NamCanActivateService]
-  },
-  {
-    path: 'news',
-    loadChildren: './client/news/news.module#NamNewsModule'
-  },
-  {
-    path: 'post',
-    loadChildren: './client/post/post.module#NamPostModule',
-    canLoad: [NamCanActivateService]
-  },
-  {
     path: '',
-    loadChildren: './client/home/home.module#NamHomeModule'
+    loadChildren: './client/client.module#NamClientModule'
+  },
+  {
+    path: 'admin',
+    loadChildren: './admin/admin.module#NamAdminModule'
   },
   {
     path: '',
