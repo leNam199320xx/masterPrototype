@@ -6,8 +6,7 @@ import { ProductService } from '../../service/product.service';
 
 @Component({
     selector: 'nam-list-product',
-    templateUrl: 'list.component.html',
-    styleUrls: ['list.scss']
+    templateUrl: 'list.component.html'
 })
 export class NamListProductComponent implements OnInit {
     @Output() nextPage: EventEmitter<any> = new EventEmitter();

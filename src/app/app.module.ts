@@ -23,9 +23,18 @@ import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader'
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CloudConnectionService } from './service/cloud-connection.service';
+import { NamNavTopComponent } from './nav/nav-top.component';
+import { NamNavRightComponent } from './nav/right/nav-right.component';
+import { NamNavLeftComponent } from './nav/left/nav-left.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NamNavTopComponent,
+    NamNavRightComponent,
+    NamNavLeftComponent,
+    NamFooterComponent,
+    NamPrivacyComponent,
+    NamNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +61,9 @@ import { CloudConnectionService } from './service/cloud-connection.service';
 export class AppModule {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(APP_ID) private appId: string) {
+    @Inject(APP_ID) private appId: string,
+    private loginService: NamLoginService) {
+    console.log(this.loginService.FB);
     const platform = isPlatformBrowser(platformId) ?
       'in the browser' : 'on the server';
     console.log(`Running ${platform} with appId=${appId}`);

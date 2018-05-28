@@ -8,7 +8,7 @@ import { NamCommonService } from './common.service';
 @Injectable()
 export class NamNewsService {
     page: NamPageModel;
-    news: NamNewsModel[];
+    news: NamNewsModel[] = [];
     newsCurrent: NamNewsModel;
     newsSubject: Subject<NamNewsModel[]> = new Subject();
     newsObservable: Observable<NamNewsModel[]> = new Observable();

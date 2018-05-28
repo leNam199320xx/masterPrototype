@@ -1,0 +1,64 @@
+$defaultSize: 1em;
+$defaultPadding: 0.75em;
+@mixin ButtonDefine($name, $size: $defaultSize, $padding: $defaultPadding) {
+  button.#{$name} {
+    font-size: $size;
+    padding: $padding;
+    border-style: solid;
+  }
+}
+
+@mixin StateElement($state, $color) {
+  .type-#{$state} {
+    border-color: $color;
+    color: $color;
+    background-color: transparent;
+    &button {
+      @include ButtonHover($color);
+    }
+  }
+}
+
+@mixin ButtonHover($color) {
+  &.btn-selected {
+    background-color: rgba($color: $color, $alpha: 0.2);
+  }
+  &:hover {
+    background-color: rgba($color: $color, $alpha: 0.1);
+  }
+  &:active {
+    background-color: rgba($color: $color, $alpha: 0.2);
+  }
+}
+
+@include StateElement('danger', $red);
+@include StateElement('success', $green);
+@include StateElement('warning', $orange);
+@include StateElement('white', $white);
+@include ButtonDefine('real', 1em, 0.1em 0.2em 0.1em 0.2em);
+@include ButtonDefine('small', 0.75em, 0.5em);
+@include ButtonDefine('large', 2em, 0.5em);
+@include ButtonDefine('normal');
+nam-button {
+  .button {
+    display: inline-block;
+  }
+  .button-background {
+    background-color: white;
+    display: inline-block;
+  }
+  button {
+    max-width: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border-width: 0;
+    border-color: $mainColor;
+    font-size: 1em;
+    color: $mainColor;
+    width: inherit;
+    &.has-border {
+      border-width: 1px;
+    }
+    @include ButtonHover($mainColor);
+  }
+}

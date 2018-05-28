@@ -17,7 +17,6 @@ export class NamPostService {
         private http: HttpClient,
         private commonService: NamCommonService,
         private loginService: NamLoginService) {
-        // this.page = new NamPageModel(2000, 10);
         this.isLoadMore = this.commonService.isLoadMore;
         this.loginService.postsSubject.subscribe(res => {
             this.postsSubject.next(res);

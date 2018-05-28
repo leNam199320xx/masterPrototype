@@ -3,8 +3,7 @@ import { NamPageModel } from '../../model/page.model';
 
 @Component({
     selector: 'nam-paging',
-    templateUrl: 'paging.component.html',
-    styleUrls: ['paging.scss']
+    templateUrl: 'paging.component.html'
 })
 
 export class NamPagingComponent implements OnInit {

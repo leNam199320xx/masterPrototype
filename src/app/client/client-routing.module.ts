@@ -5,12 +5,6 @@ import { NamCanActivateService } from '../service/can-activate.service';
 import { NamPrivacyComponent } from './privacy/privacy.component';
 import { NamNotFoundComponent } from './notfound/notfound.component';
 
-// const routes: Routes = [
-//     {
-//         path: '',
-//         component: NamClientComponent
-//     }
-// ];
 const routes: Routes = [
     {
         path: 'customer',
@@ -20,7 +14,7 @@ const routes: Routes = [
     {
         path: 'product',
         loadChildren: './product/product.module#NamProductModule',
-        canLoad: [NamCanActivateService]
+        canActivate: [NamCanActivateService]
     },
     {
         path: 'news',
@@ -34,14 +28,6 @@ const routes: Routes = [
     {
         path: '',
         loadChildren: './home/home.module#NamHomeModule'
-    },
-    {
-        path: 'privacy-policy',
-        component: NamPrivacyComponent
-    },
-    {
-        path: '**',
-        component: NamNotFoundComponent
     }
 ];
 @NgModule({

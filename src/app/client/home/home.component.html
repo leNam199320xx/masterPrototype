@@ -1,7 +1,7 @@
 <div class='home'>
   <div class='home-no-login' *ngIf='!loging'>
     <div>PLEASE LOGIN TO USE THIS TOOL</div>
-    <button (click)='btnLogin()'>Login</button>
+    <nam-button (click)='btnLogin()' title="Login" [hasBackground]='true'></nam-button>
   </div>
   <div class='home-login' *ngIf='loging'>
     <div>WELLCOME TO YOURBOOK TOOL</div>

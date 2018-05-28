@@ -1,16 +1,16 @@
 <div class='paging'>
   <div class='paging-controls' *ngIf='!page.loadMore'>
-    <nam-button className='small' (btnClick)='btnBackClick()' title="back"></nam-button>
-    <nam-button className='small' (btnClick)='backPaging()' title="..." *ngIf='indexPaging > minIndexPaging'></nam-button>
+    <nam-button className='small' (click)='btnBackClick()' title="back"></nam-button>
+    <nam-button className='small' (click)='backPaging()' title="..." *ngIf='indexPaging > minIndexPaging'></nam-button>
 
     <ng-container *ngFor='let ix of pagings'>
-        <nam-button className='small' title='{{ix + 1}}' (btnClick)='btnGotoClick(ix + 1)' [btnSelected]='checkSelected(ix)'></nam-button>
+        <nam-button className='small' title='{{ix + 1}}' (click)='btnGotoClick(ix + 1)' [btnSelected]='checkSelected(ix)'></nam-button>
     </ng-container>
 
-    <nam-button className='small' title="..." (btnClick)='nextPaging()' *ngIf='indexPaging < maxIndexPaging'></nam-button>
-    <nam-button className='small' title="next" (btnClick)='btnNextClick()'></nam-button>
+    <nam-button className='small' title="..." (click)='nextPaging()' *ngIf='indexPaging < maxIndexPaging'></nam-button>
+    <nam-button className='small' title="next" (click)='btnNextClick()'></nam-button>
   </div>
   <div *ngIf='page.loadMore'>
-    <nam-button title="Load More" (btnClick)='btnNextClick(true)'></nam-button>
+    <nam-button title="Load More" (click)='btnNextClick(true)'></nam-button>
   </div>
 </div>

@@ -2,8 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'nam-checkbox',
-    templateUrl: 'checkbox.component.html',
-    styleUrls: ['checkbox.scss']
+    templateUrl: 'checkbox.component.html'
 })
 export class NamCheckboxComponent {
     @Input() checkboxes: NamCheckboxModel[] = [];

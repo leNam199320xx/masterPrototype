@@ -11,7 +11,8 @@ import { NamWindowService } from '../service/window.service';
 })
 export class NamClientComponent implements AfterViewInit {
     constructor(
-        public http: HttpClient, private router: Router,
+        public http: HttpClient,
+        private router: Router,
         public loginService: NamLoginService,
         public postService: NamPostService,
         private windowService: NamWindowService
@@ -30,10 +31,4 @@ export class NamClientComponent implements AfterViewInit {
 
     }
 
-    btnLogin() {
-        this.loginService.login();
-    }
-    btnLogout() {
-        this.loginService.logout();
-    }
 }

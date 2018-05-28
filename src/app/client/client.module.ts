@@ -9,11 +9,9 @@ import { NamChatComponent } from './chat/chat.component';
 import { NamNotFoundComponent } from './notfound/notfound.component';
 
 @NgModule({
-    declarations: [NamClientComponent,
-        NamFooterComponent,
-        NamPrivacyComponent,
-        NamChatComponent,
-        NamNotFoundComponent
+    declarations: [
+        NamClientComponent,
+        NamChatComponent
     ],
     imports: [NamClientRoutingModule, CommonModule, NamCommonModule]
 })

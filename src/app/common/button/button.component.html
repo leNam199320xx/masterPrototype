@@ -1,4 +1,4 @@
-<div [ngClass]='{"button-background": hasBackground}'>
-  <button class='{{className}}' (click)='btnClick.emit($event)' [ngClass]='{"has-border": hasBorder, "btn-selected": btnSelected}'
+<div class='button' [ngClass]='{"button-background": hasBackground}'>
+  <button class='{{className}}' [ngClass]='{"has-border": hasBorder, "btn-selected": btnSelected}'
     [ngStyle]='{"width": width}'>{{title}}</button>
 </div>

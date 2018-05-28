@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { isPlatformBrowser } from '@angular/common';
 import { NamWindowService } from './window.service';
+import { NamCanActivateService } from './can-activate.service';
 
 @Injectable()
 export class NamLoginService implements OnInit {
@@ -23,17 +24,26 @@ export class NamLoginService implements OnInit {
     versionFb = 'v3.0';
     currentUrl: string;
     numberPostsLoaded = 10;
-    window: any;
+    window: Window;
+    windowSubject: Subject<Window> = new Subject();
     constructor(
         private router: Router,
-        // private windowService: NamWindowService,
-        private http: HttpClient
+        private http: HttpClient,
+        private canActivateService: NamCanActivateService,
+        private activedRoute: ActivatedRoute
     ) {
         this.userSubject.next(null);
         this.postsSubject.subscribe(res => {
         });
         this.friendsSubject.subscribe(res => {
             this.friends = res;
+        });
+        this.userSubject.subscribe(res => {
+            this.canActivateService.currentUser = res;
+        });
+        this.windowSubject.subscribe(res => {
+            this.currentUrl = res.location.pathname;
+            this.window = res;
         });
     }
     ngOnInit() {
@@ -70,11 +80,9 @@ export class NamLoginService implements OnInit {
     }
     getLoginStatus() {
         (this.FB) ? this.FB.getLoginStatus((res) => {
-            console.log(res);
             if (res.authResponse) {
                 this.loging = true;
                 this.getDataUser();
-                // this.getDataPost();
             } else {
                 this.loging = false;
             }
@@ -85,15 +93,14 @@ export class NamLoginService implements OnInit {
         (this.FB) ? this.FB.api('/me?fields=id,name,picture', (res) => {
             this.user = res as UserFacebookModel;
             this.userSubject.next(this.user);
-            // console.log(this.user);
-            if (this.currentUrl) {
-                this.router.navigate([this.currentUrl]);
-                this.currentUrl = null;
-            }
+            this.canActivateService.loginSuccess = true;
             this.getDataPost();
             this.getDataFriend();
-        }
-        ) : console.log('facebook is not init, can not get user profile');
+            if (this.currentUrl) {
+                this.router.navigateByUrl(this.currentUrl);
+            }
+            this.currentUrl = undefined;
+        }) : console.log('facebook is not init, can not get user profile');
     }
 
     getDataPost() {
@@ -116,7 +123,6 @@ export class NamLoginService implements OnInit {
             + 'name,'
             + 'picture'
             + '}', (res) => {
-                console.log(res);
                 // this.friendsSubject.next(res.friends as UsersFacebookModel);
 
             }

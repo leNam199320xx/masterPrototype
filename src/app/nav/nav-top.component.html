@@ -1,0 +1,28 @@
+<div class="nav-top">
+  <ul>
+    <li>
+      <a routerLink='/'>Home</a>
+    </li>
+    <li>
+      <a routerLink='/news'>News</a>
+    </li>
+    <li *ngIf='loginService.loging'>
+      <a routerLink='/post'>Post</a>
+    </li>
+    <li *ngIf='loginService.loging'>
+      <a routerLink='/product'>Product</a>
+    </li>
+    <li *ngIf='!loginService.loging'>
+      <nam-button className="real type-white" (click)='btnLogin()' title="Login facebook"></nam-button>
+    </li>
+    <li *ngIf='loginService.loging'>
+      <nam-button className="real type-white" (click)='btnLogout()' title='Logout facebook'></nam-button>
+    </li>
+  </ul>
+  <div class='user' *ngIf='loginService.loging'>
+    <ng-container *ngIf='loginService.user'>
+      <div class='user-name'>{{loginService.user.name}}</div>
+      <div class='user-picture-profile' [ngStyle]='{"background-image" : "url("+loginService.user.picture.data.url+")"}'></div>
+    </ng-container>
+  </div>
+</div>

@@ -12,13 +12,11 @@ import { StitchClientFactory } from 'mongodb-stitch';
 
 @Component({
   selector: 'nam-root',
-  templateUrl: './app.component.html',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: ['app.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   constructor(
+    windowService: NamWindowService
   ) {
   }
-
 }

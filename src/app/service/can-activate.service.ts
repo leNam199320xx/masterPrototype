@@ -8,29 +8,25 @@ import { Route } from '@angular/compiler/src/core';
 
 @Injectable()
 export class NamCanActivateService implements CanActivate, CanActivateChild, OnDestroy, CanLoad, OnInit {
+    loginSuccess = false;
+    currentUser: UserFacebookModel;
+    currentUrl: string;
     constructor(
-        private currentUser: UserFacebookModel,
-        private router: Router,
-        private loginService: NamLoginService
+        private router: Router
     ) {
-        this.loginService.userSubject.subscribe(res => {
-            this.currentUser = res;
-        });
-        this.currentUser = this.loginService.user;
     }
 
     ngOnInit() {
-        this.currentUser = this.loginService.user;
     }
 
     ngOnDestroy() {
-        this.loginService.userSubject.unsubscribe();
     }
 
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<boolean> | Promise<boolean> | boolean {
+        this.currentUrl = state.url;
         return this.check();
     }
 
@@ -38,6 +34,7 @@ export class NamCanActivateService implements CanActivate, CanActivateChild, OnD
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<boolean> | Promise<boolean> | boolean {
+        this.currentUrl = state.url;
         return this.check();
     }
 
@@ -47,10 +44,24 @@ export class NamCanActivateService implements CanActivate, CanActivateChild, OnD
         return this.check();
     }
     check() {
-        const result = (this.currentUser) ? true : false;
-        if (!result) {
-            this.router.navigate(['/notfound']);
-        }
+        // console.log('user:', this.loginService.getDataUser());
+        // this.loginService.userSubject.subscribe(res => {
+        //     console.log('check login status ', res);
+        //     this.loginSuccess = true;
+        //     const result = (this.currentUser) ? true : false;
+        //     if (!result) {
+        //         console.log('not found');
+        //         this.loginSuccess = result;
+        //         this.router.navigate(['/notfound']);
+        //     }
+        // });
+        const result = this.currentUser !== undefined && this.loginSuccess;
         return result;
+        // const result = (this.currentUser) ? true : false;
+        // if (!result) {
+        //     console.log('not found');
+        //     this.router.navigate(['/notfound']);
+        // }
+        // return result;
     }
 }

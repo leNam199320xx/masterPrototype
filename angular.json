@@ -21,7 +21,8 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/app.scss"
             ],
             "scripts": [
               "src/extendScript/facebookClient.js"
@@ -132,11 +133,11 @@
   "defaultProject": "master-prototype",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
-      "styleext": "css"
+      "prefix": "nam",
+      "styleext": "scss"
     },
     "@schematics/angular:directive": {
-      "prefix": "app"
+      "prefix": "nam"
     }
   }
 }

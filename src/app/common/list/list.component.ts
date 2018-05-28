@@ -2,8 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NamItemModel } from '../../model/item.model';
 @Component({
     selector: 'nam-list',
-    templateUrl: 'list.component.html',
-    styleUrls: ['list.scss']
+    templateUrl: 'list.component.html'
 })
 export class NamListComponent {
     itemCurrent: NamItemModel = {

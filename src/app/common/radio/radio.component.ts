@@ -3,7 +3,6 @@ import { NamCheckboxModel } from '../checkbox/checkbox.component';
 
 @Component({
     selector: 'nam-radio',
-    styleUrls: ['radio.scss'],
     templateUrl: 'radio.component.html'
 })
 
