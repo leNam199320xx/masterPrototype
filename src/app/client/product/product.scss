@@ -1,20 +1,20 @@
-@import '../../config.scss';
+@import "../../config.scss";
 .products-area {
-  position: relative;
-  .products-control {
-    background-color: white;
-    border-bottom: solid 1px $mainColor;
-    width: 100%;
-    padding: 0.5em;
-    .products-search,
-    .products-sort {
-      display: inline-block;
-      margin-right: 1em;
+    position: relative;
+    .products-control {
+        background-color: white;
+        border-bottom: solid 1px $mainColor;
+        width: 100%;
+        padding: 0.5em;
+        .products-search,
+        .products-sort {
+            display: inline-block;
+            margin-right: 1em;
+        }
+        .products-sort {
+            * {
+                display: inline-block;
+            }
+        }
     }
-    .products-sort {
-      * {
-        display: inline-block;
-      }
-    }
-  }
 }

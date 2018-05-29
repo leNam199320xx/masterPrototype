@@ -1,46 +1,47 @@
-@import 'config.scss';
+@import "config.scss";
 body {
-  margin: 0;
-  background-color: $mainBackgroundColor;
-  font-family: $mainTextFamily;
+    margin: 0;
+    background-color: $mainBackgroundColor;
+    font-family: $mainTextFamily;
 }
+
 a {
-  color: inherit;
-  line-height: inherit;
-  font-size: inherit;
-  text-decoration: none
+    color: inherit;
+    line-height: inherit;
+    font-size: inherit;
+    text-decoration: none;
 }
 
 ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  list-style-type: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    list-style-type: none;
 }
 
 select,
 input {
-  padding: 0.25em;
-  color: $mainColor;
-  font-size: 1em;
-  border: solid 1px $mainColor;
-  display: inline-block;
+    padding: 0.25em;
+    color: $mainColor;
+    font-size: 1em;
+    border: solid 1px $mainColor;
+    display: inline-block;
 }
 
 .main {
-  min-height: 100vh;
-  margin-top: 3em;
+    min-height: 100vh;
+    margin-top: 3em;
 }
 
 // component style
 @import 'style/nav-top.scss';
-@import 'style/nav-left.scss';
-@import 'style/nav-right.scss';
-@import 'style/footer.scss';
+@import "style/nav-left.scss";
+@import "style/nav-right.scss";
+@import "style/footer.scss";
 // common style
-@import 'style/common/button.scss';
-@import 'style/common/checkbox.scss';
-@import 'style/common/radio.scss';
-@import 'style/common/paging.scss';
-@import 'style/common/list.scss';
-@import 'style/common/list-product.scss';
+@import "style/common/button.scss";
+@import "style/common/checkbox.scss";
+@import "style/common/radio.scss";
+@import "style/common/paging.scss";
+@import "style/common/list.scss";
+@import "style/common/list-product.scss";
