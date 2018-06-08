@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NamClientComponent } from './client.component';
 import { NamCanActivateService } from '../service/can-activate.service';
-import { NamPrivacyComponent } from './privacy/privacy.component';
-import { NamNotFoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
     {
@@ -15,6 +12,10 @@ const routes: Routes = [
         path: 'product',
         loadChildren: './product/product.module#NamProductModule',
         canActivate: [NamCanActivateService]
+    },
+    {
+        path: 'creater',
+        loadChildren: './creater/creater.module#NamCreaterModule'
     },
     {
         path: 'news',

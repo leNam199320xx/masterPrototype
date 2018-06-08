@@ -1,0 +1,19 @@
+{
+    "user": "namld",
+    "created_date": "",
+    "updated_date": "",
+    "config": {
+        "panels": [{
+                "name": "nav-top",
+                "width": "100%"
+            }, {
+                "name": "nav-top",
+                "width": "100%"
+            },
+            {
+                "name": "nav-top",
+                "width": "100%"
+            }
+        ]
+    }
+}

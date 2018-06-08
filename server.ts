@@ -22,6 +22,9 @@ const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/mai
 import { ngExpressEngine } from '@nguniversal/express-engine';
 // Import module map for lazy loading
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+
+const fs = require('fs');
+
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
   providers: [
@@ -33,9 +36,9 @@ app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, 'browser'));
 
 // TODO: implement data requests securely
-app.get('/api/*', (req, res) => {
-  res.status(404).send('data requests are not supported');
-});
+// app.get('/api/*', (req, res) => {
+//   res.status(404).send('data requests are not supported');
+// });
 
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
