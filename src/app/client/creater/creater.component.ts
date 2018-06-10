@@ -9,9 +9,10 @@ import { NamCreaterPanelModel } from './panel/panel.model';
 export class NamCreaterComponent {
     @Input() panels: NamCreaterPanelModel[];
     constructor(private http: HttpClient) {
-        const configConnect = this.http.get('/api/getconfig');
+        const configConnect = this.http.get('http://localhost:3000/api/getconfig');
         configConnect.subscribe(res => {
             this.panels = <NamCreaterPanelModel[]>(<any>res).config.panels;
+            console.log(res);
         });
     }
 

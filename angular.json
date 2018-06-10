@@ -145,5 +145,10 @@
     "@schematics/angular:directive": {
       "prefix": "nam"
     }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false
+    }
   }
 }

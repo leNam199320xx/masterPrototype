@@ -48,8 +48,8 @@ export class HammerConfig extends HammerGestureConfig {
         NamCommonModule,
         NamCommonMatModule,
         BrowserModule.withServerTransition({ appId: '1234567890' }),
-        ModuleMapLoaderModule,
-        BrowserTransferStateModule
+        // ModuleMapLoaderModule,
+        // BrowserTransferStateModule
     ],
     providers: [
         NamCommonService,
