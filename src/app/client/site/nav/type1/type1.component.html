@@ -1,0 +1,6 @@
+<div class='type1'>
+    <div class='nav-icon'>Your site</div>
+    <div class='nav-item' *ngFor='let n of navItems'>
+        <a [routerLink]='n.url'>{{n.text}}</a>
+    </div>
+</div>

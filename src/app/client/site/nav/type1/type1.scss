@@ -1,0 +1,18 @@
+.type1 {
+    font-size: 1em;
+    line-height: 1em;
+    width: 100%;
+    .nav-icon {
+        display: inline-block;
+        font-size: 2em;
+        line-height: 1em;
+        padding: 10px;
+    }
+    .nav-item {
+        padding: 10px;
+        display: inline-block;
+        &:hover {
+            border-bottom: 1px solid blue;
+        }
+    }
+}

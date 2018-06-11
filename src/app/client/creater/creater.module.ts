@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { NamCreaterComponent } from './creater.component';
 import { NamCreaterRoutingModule } from './creater-routing.module';
-import { NamCreaterPanelComponent } from './panel/panel.component';
 import { CommonModule } from '@angular/common';
 import { NamCommonModule } from '../../common/NamCommon.module';
+import { NamCreaterService } from './creater.service';
+import { NamCreaterControlComponent } from './control/control.component';
 
 @NgModule({
     declarations: [
         NamCreaterComponent,
-        NamCreaterPanelComponent
+        NamCreaterControlComponent
     ],
     imports: [
         CommonModule,
         NamCommonModule,
         NamCreaterRoutingModule
-    ]
+    ],
+    providers: [NamCreaterService]
 })
 
 export class NamCreaterModule {

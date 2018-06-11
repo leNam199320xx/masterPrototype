@@ -1,3 +1,13 @@
 .creater {
+    padding: 20px;
     position: relative;
+    background-color: darkgrey;
+    height: 80vh;
+    display: flex;
+    .left {
+        width: 150px;
+    }
+    .panels {
+        width: 100%;
+    }
 }

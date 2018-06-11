@@ -1,0 +1,14 @@
+nam-creater-control {
+    .control {
+        padding: 10px;
+        background-color: white;
+        .group{
+            .group-title{
+                font-weight: bold;
+            }
+            .group-content{
+                padding-left: 10px;
+            }
+        }
+    }
+}

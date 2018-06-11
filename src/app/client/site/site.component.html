@@ -1,0 +1,7 @@
+<ng-container *ngIf='nav && nav.tabs'>
+    <nam-creater-nav [navItems]='nav.tabs'></nam-creater-nav>
+</ng-container>
+<ng-container *ngFor='let panel of panels'>
+    <nam-creater-panel [panel]='panel'></nam-creater-panel>
+</ng-container>
+<nam-creater-footer></nam-creater-footer>

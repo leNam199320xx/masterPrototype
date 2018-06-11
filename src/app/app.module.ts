@@ -1,5 +1,5 @@
 
-import * as Hammer from 'hammerjs';
+// import * as Hammer from 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,8 +24,9 @@ import { NamNavTopComponent } from './nav/nav-top.component';
 import { NamNavRightComponent } from './nav/right/nav-right.component';
 import { NamNavLeftComponent } from './nav/left/nav-left.component';
 import { NamCommonMatModule } from './common/NamCommonMat.module';
-import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
-import { BrowserTransferStateModule } from '@angular/platform-browser';
+import { NamSiteModule } from './client/site/site.module';
+// import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
+// import { BrowserTransferStateModule } from '@angular/platform-browser';
 
 export class HammerConfig extends HammerGestureConfig {
 }
@@ -47,6 +48,7 @@ export class HammerConfig extends HammerGestureConfig {
         AppRoutingModule,
         NamCommonModule,
         NamCommonMatModule,
+        NamSiteModule,
         BrowserModule.withServerTransition({ appId: '1234567890' }),
         // ModuleMapLoaderModule,
         // BrowserTransferStateModule

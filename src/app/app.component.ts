@@ -3,11 +3,12 @@ import { NamWindowService } from './service/window.service';
 
 @Component({
     selector: 'nam-root',
-    templateUrl: './app.component.html'
+    templateUrl: 'app.component.html'
 })
 export class AppComponent {
     constructor(
-        windowService: NamWindowService
+        public windowService: NamWindowService
     ) {
+        windowService.isSite = true;
     }
 }

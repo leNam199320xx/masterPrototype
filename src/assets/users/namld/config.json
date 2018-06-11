@@ -3,17 +3,25 @@
     "created_date": "",
     "updated_date": "",
     "config": {
+        "width": "1366px",
+        "font": {
+            "color": "black",
+            "fontSize": "1em"
+        },
         "panels": [{
-                "name": "nav-top",
-                "width": "100%"
-            }, {
-                "name": "nav-top",
-                "width": "100%"
-            },
-            {
-                "name": "nav-top",
-                "width": "100%"
-            }
-        ]
+            "type": 2,
+            "name": "panel 1",
+            "width": "100%"
+        }],
+        "nav": {
+            "tabs": [{
+                "text": "Product",
+                "url": ""
+            }],
+            "type": 1
+        },
+        "footer": {
+            "type": 1
+        }
     }
 }

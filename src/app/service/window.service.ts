@@ -5,6 +5,7 @@ import { NamLoginService } from './login.service';
 
 @Injectable()
 export class NamWindowService implements OnDestroy, OnInit {
+    isSite = false;
     currentBreakpoint: Breakpoints;
     currentBreakpointSubject: Subject<Breakpoints> = new Subject();
     breakpoints: Breakpoints[] = [{
