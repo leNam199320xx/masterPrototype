@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule, InjectionToken } from '@angular/core';
+import { Routes, RouterModule, ActivatedRouteSnapshot } from '@angular/router';
 import { NamNotFoundComponent } from './client/notfound/notfound.component';
 import { NamCanActivateService } from './service/can-activate.service';
 import { NamPrivacyComponent } from './client/privacy/privacy.component';

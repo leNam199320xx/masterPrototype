@@ -2,6 +2,8 @@ import { HostListener, Injectable, OnDestroy, PLATFORM_ID, APP_ID, Inject, OnIni
 import { Subject } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { NamLoginService } from './login.service';
+import { NamHeaderModel } from '../model/header.model';
+import { NamFooterModel } from '../model/footer.model';
 
 @Injectable()
 export class NamWindowService implements OnDestroy, OnInit {

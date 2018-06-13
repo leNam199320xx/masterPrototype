@@ -16,6 +16,11 @@ app.get('/api/getconfig', function (req, res) {
     res.status(200).send(data);
 });
 
+app.get('/api/getRegisterUrls', function (req, res) {
+    var data = JSON.parse(fs.readFileSync('./server/registerUrls.json', 'utf8'));
+    res.status(200).send(data);
+});
+
 app.post('/api/setconfig', function (req, res) {
     if (req.body && req.body.fileValue) {
         var json = JSON.stringify(req.body.fileValue);

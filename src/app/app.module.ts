@@ -3,28 +3,28 @@
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { NamNotFoundComponent } from './client/notfound/notfound.component';
-import { AppRoutingModule } from './app-routing.module';
+import { NgModule, PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { isPlatformBrowser } from '@angular/common';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { NamCommonService } from './service/common.service';
-import { NamCommonModule } from './common/NamCommon.module';
 import { NamLoginService } from './service/login.service';
 import { NamPostService } from './service/post.service';
-import { NamFooterComponent } from './client/footer/footer.component';
-import { UserFacebookModel } from './model/user.model';
 import { NamCanActivateService } from './service/can-activate.service';
 import { NamWindowService } from './service/window.service';
-import { NamPrivacyComponent } from './client/privacy/privacy.component';
-import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 import { CloudConnectionService } from './service/cloud-connection.service';
 import { NamNavTopComponent } from './nav/nav-top.component';
 import { NamNavRightComponent } from './nav/right/nav-right.component';
 import { NamNavLeftComponent } from './nav/left/nav-left.component';
 import { NamCommonMatModule } from './common/NamCommonMat.module';
+import { NamCommonModule } from './common/NamCommon.module';
 import { NamSiteModule } from './client/site/site.module';
+import { NamNotFoundComponent } from './client/notfound/notfound.component';
+import { NamFooterComponent } from './client/footer/footer.component';
+import { NamPrivacyComponent } from './client/privacy/privacy.component';
+import { UserFacebookModel } from './model/user.model';
+import { NamPageConfigService } from './service/page-config.service';
 // import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
 // import { BrowserTransferStateModule } from '@angular/platform-browser';
 
@@ -60,6 +60,7 @@ export class HammerConfig extends HammerGestureConfig {
         NamCanActivateService,
         NamWindowService,
         CloudConnectionService,
+        NamPageConfigService,
         UserFacebookModel,
         {
             provide: HAMMER_GESTURE_CONFIG,

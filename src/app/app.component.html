@@ -1,12 +1,5 @@
-<ng-container *ngIf='!windowService.isSite'>
-    <nam-nav-top></nam-nav-top>
-    <div class='main'>
-        <router-outlet>
-        </router-outlet>
-    </div>
-    <nam-footer></nam-footer>
-</ng-container>
-
-<ng-container *ngIf='windowService.isSite'>
-    <nam-site></nam-site>
-</ng-container>
+<nam-nav-top>
+</nam-nav-top>
+<router-outlet>
+</router-outlet>
+<nam-footer></nam-footer>
